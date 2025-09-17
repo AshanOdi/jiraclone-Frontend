@@ -12,12 +12,33 @@
 //   );
 // }
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Card({ task, setData }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
+  //   const dropdownRef = useRef(null);
+
+  //   useEffect(() => {
+  //     // Function to close the dropdown if a click is outside
+  //     const handleClickOutside = (event) => {
+  //       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //         setOpen(false);
+  //       }
+  //     };
+
+  //     // Add event listener when the dropdown is open
+  //     if (open) {
+  //       document.addEventListener("mousedown", handleClickOutside);
+  //     }
+
+  //     // Clean up the event listener when the component unmounts
+  //     return () => {
+  //       document.removeEventListener("mousedown", handleClickOutside);
+  //     };
+  //   }, [open]);
 
   function Handler(...args) {
     console.log();
@@ -57,7 +78,8 @@ export default function Card({ task, setData }) {
         {/* Button */}
         {task.status !== "RESOLVED" && (
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setOpen(!open);
             }}
             className="border border-gray-400 px-4 py-2 rounded cursor-pointer font-bold
@@ -86,7 +108,10 @@ export default function Card({ task, setData }) {
 
             {task.status === "IN_PROGRESS" && (
               <div
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpen(!open);
+                }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >
                 WAITING ON CLIENT
@@ -96,7 +121,10 @@ export default function Card({ task, setData }) {
             {(task.status === "IN_PROGRESS" ||
               task.status === "WAITING_ON_CLIENT") && (
               <div
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpen(!open);
+                }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >
                 RESOLVED
