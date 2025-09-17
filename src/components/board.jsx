@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initialData } from "../assets/sample";
 import Column from "./column";
 
@@ -6,11 +6,11 @@ export default function Board() {
   const [data, setData] = useState(initialData);
 
   return (
-    <div className="w-full h-screen flex flex-raw gap-4 p-6 flex">
-      <Column title="OPEN" tasks={data.todo} />
-      <Column title="IN PROGRESS" tasks={data.inProgress} />
-      <Column title="WAITING ON CLIENT" tasks={data.codeReview} />
-      <Column title="RESOLVED" tasks={data.done} />
+    <div className="w-full  flex flex-raw gap-4 p-6">
+      <Column title="OPEN" tasks={data[0]} />
+      <Column title="IN PROGRESS" tasks={data[1]} />
+      <Column title="WAITING ON CLIENT" tasks={data[2]} />
+      <Column title="RESOLVED" tasks={data[3]} />
     </div>
   );
 }

@@ -1,55 +1,35 @@
-export const initialData = {
-  todo: [
+export const initialData = [
+  [
     {
-      id: "TIS-25",
-      title: "Engage Jupiter Express for travel",
-      label: "SPACE TRAVEL PARTNERS",
+      id: 2,
+      title: "new not working",
+      description: "test3, test3  ",
+      type: "QUESTION",
+      status: "OPEN",
+      createdAt: "2025-09-17T00:34:34.553203",
+      updatedAt: "2025-09-17T00:34:34.553203",
     },
     {
-      id: "TIS-12",
-      title: "Create 90 day plans for Mars Office",
-      label: "LOCAL MARS OFFICE",
-    },
-    {
-      id: "TIS-25",
-      title: "Engage Jupiter Express for travel",
-      label: "SPACE TRAVEL PARTNERS",
-    },
-    {
-      id: "TIS-12",
-      title: "Create 90 day plans for Mars Office",
-      label: "LOCAL MARS OFFICE",
-    },
-    {
-      id: "TIS-25",
-      title: "Engage Jupiter Express for travel",
-      label: "SPACE TRAVEL PARTNERS",
-    },
-    {
-      id: "TIS-12",
-      title: "Create 90 day plans for Mars Office",
-      label: "LOCAL MARS OFFICE",
+      id: 3,
+      title: "new new not working",
+      description: "test4, test4  ",
+      type: "QUESTION",
+      status: "OPEN",
+      createdAt: "2025-09-17T09:39:57.906321",
+      updatedAt: "2025-09-17T09:53:52.69506",
     },
   ],
-  inProgress: [
+  [
     {
-      id: "TIS-16",
-      title: "Requesting available flights",
-      label: "SPACERACER PLUS",
+      id: 1,
+      title: "test not working",
+      description: "test2, test2  ",
+      type: "BUG",
+      status: "IN_PROGRESS",
+      createdAt: "2025-09-16T23:46:22.86559",
+      updatedAt: "2025-09-17T08:38:10.323103",
     },
   ],
-  codeReview: [
-    {
-      id: "TIS-11",
-      title: "Register with Mars Ministry",
-      label: "LOCAL MARS OFFICE",
-    },
-  ],
-  done: [
-    {
-      id: "TIS-18",
-      title: "Homepage footer uses inline style",
-      label: "LARGE TEAM SUPPORT",
-    },
-  ],
-};
+  [],
+  [],
+];
