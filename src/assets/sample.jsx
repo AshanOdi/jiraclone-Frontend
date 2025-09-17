@@ -21,7 +21,7 @@ export const initialData = [
   ],
   [
     {
-      id: 1,
+      id: 4,
       title: "test not working",
       description: "test2, test2  ",
       type: "BUG",
@@ -32,7 +32,7 @@ export const initialData = [
   ],
   [
     {
-      id: 1,
+      id: 5,
       title: "test not working",
       description: "test2, test2  ",
       type: "BUG",
@@ -43,7 +43,7 @@ export const initialData = [
   ],
   [
     {
-      id: 1,
+      id: 6,
       title: "test not working",
       description: "test2, test2  ",
       type: "BUG",

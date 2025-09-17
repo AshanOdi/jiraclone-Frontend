@@ -14,8 +14,22 @@
 
 import { useState } from "react";
 
-export default function Card({ task }) {
+export default function Card({ task, setData }) {
   const [open, setOpen] = useState(false);
+
+  function Handler(...args) {
+    console.log();
+    setOpen(false);
+    setData((prevData) => {
+      return prevData.map((issue) => {
+        console.log(issue);
+        if (issue.id === task.id) {
+          return { ...issue, status: "IN_PROGRESS" };
+        }
+        return issue;
+      });
+    });
+  }
 
   return (
     <div className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-blue-500">
@@ -31,7 +45,9 @@ export default function Card({ task }) {
         {/* Button */}
         {task.status !== "RESOLVED" && (
           <button
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setOpen(!open);
+            }}
             className="border border-gray-400 px-4 py-2 rounded cursor-pointer font-bold
           flex justify-between items-center  bg-white shadow"
           >
@@ -44,9 +60,12 @@ export default function Card({ task }) {
         {open && (
           <div className="absolute top-[45px] left-0 w-[180px] bg-white border border-gray-300 rounded shadow-md z-10">
             {(task.status === "OPEN" ||
-              task.status === "Waiting On Client") && (
+              task.status === "WAITING_ON_CLIENT") && (
               <div
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  Handler([0, 2]);
+                }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >
                 IN_PROGRESS

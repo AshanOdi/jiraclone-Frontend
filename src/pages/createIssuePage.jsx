@@ -1,7 +1,8 @@
 export default function CreateIssuePage() {
   return (
     <div>
-      <h1>this is create Issue</h1>
+      <h1>Create Your New Issue</h1>
+      <input type="text" />
     </div>
   );
 }
