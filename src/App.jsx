@@ -1,18 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Header from "./components/Header";
-import Homepage from "./pages/home";
+import HomePage from "./pages/homePage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllIssuePage from "./pages/allIssuePage";
+import EditIssuePage from "./pages/editIssuePage";
+import CreateIssuePage from "./pages/createIssuePage";
+import IssueDetailPage from "./pages/issueDetailPage";
 
 function App() {
   return (
-    <div className="w-full h-screen flex flex-col items-center">
-      <Header />
+    <BrowserRouter>
       <div>
-        <Homepage />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/issue" element={<AllIssuePage />} />
+          <Route path="/edit" element={<EditIssuePage />} />
+          <Route path="/create" element={<CreateIssuePage />} />
+          <Route path="/detail" element={<IssueDetailPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
