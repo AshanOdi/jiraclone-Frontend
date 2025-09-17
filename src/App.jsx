@@ -11,17 +11,19 @@ import IssueHistoryPage from "./pages/issueHistoryPage";
 function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className="w-full h-screen flex flex-col">
         <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/issue" element={<AllIssuePage />} />
-          <Route path="/edit" element={<EditIssuePage />} />
-          <Route path="/create" element={<CreateIssuePage />} />
-          <Route path="/detail" element={<IssueDetailPage />} />
-          <Route path="/history" element={<IssueHistoryPage />} />
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+        <div className="w-full h-[calc(100vh-20px)] flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/issue" element={<AllIssuePage />} />
+            <Route path="/edit" element={<EditIssuePage />} />
+            <Route path="/create" element={<CreateIssuePage />} />
+            <Route path="/detail" element={<IssueDetailPage />} />
+            <Route path="/history" element={<IssueHistoryPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );
