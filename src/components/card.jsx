@@ -13,8 +13,10 @@
 // }
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Card({ task, setData }) {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   function Handler(...args) {
@@ -32,13 +34,23 @@ export default function Card({ task, setData }) {
   }
 
   return (
-    <div className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-blue-500">
+    <div
+      onClick={() => {
+        navigate("/detail");
+      }}
+      className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-blue-500 cursor-pointer"
+    >
       <p className="font-semibold">{task.title}</p>
-      <span className="text-xs bg-yellow-200 text-black px-2 py-1 rounded">
-        {task.label}
+      <span className="text-xs bg-red-200 text-black px-2 py-1 rounded">
+        {task.type}
         {console.log(task.status)}
       </span>
-      <p className="text-xs text-gray-500 mt-1">{task.id}</p>
+      <p className="text-xs text-gray-500 mt-1">
+        {task.updatedAt.split("T")[0]}
+      </p>
+      <p className="text-xs text-gray-500 mt-1">
+        {task.updatedAt.split("T")[1].split(".")[0]}
+      </p>
 
       {/* Dropdown */}
       <div className="relative mt-3">
