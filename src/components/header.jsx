@@ -17,21 +17,21 @@ export default function Header() {
       />
       <div className="w-[calc(100%-80px)] h-full flex justify-center items-center">
         <Link to="/" className="text-[20px] font-bold mx-2">
-          Home
+          Dashboard
         </Link>
-        <Link to="/products" className="text-[20px] font-bold mx-2">
-          Products
+        <Link to="/issue" className="text-[20px] font-bold mx-2">
+          Issues
         </Link>
-        <Link to="/about" className="text-[20px] font-bold mx-2">
-          About
+        <Link to="/history" className="text-[20px] font-bold mx-2">
+          Issue History
         </Link>
-        <Link to="/contact" className="text-[20px] font-bold mx-2">
-          Contact
+        <Link to="/create" className="text-[20px] font-bold mx-2">
+          Add Issue
         </Link>
       </div>
       <div className="w-[80px] flex justify-center items-center">
         <Link to="/cart" className="text-[20px] font-bold mx-2">
-          <BsCart3 />
+          {/* Add Profile or Something */}
         </Link>
       </div>
     </header>
