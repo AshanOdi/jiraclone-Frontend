@@ -6,16 +6,16 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full h-[80px] shadow-2xl flex">
+    <header className="w-full h-[80px] shadow-2xl flex items-center">
       <img
-        className="w-[80px] h-[80px] object-cover cursor-pointer"
-        src="/logo.png"
+        className="w-[70px] h-[70px] object-cover cursor-pointer mx-2"
+        src="/Logo-jira.png"
         alt="logo"
         onClick={() => {
           navigate("/");
         }}
       />
-      <div className="w-[calc(100%-80px)] h-full flex justify-center items-center">
+      <div className="w-[calc(100%-80px)] h-full flex justify-center items-center ">
         <Link to="/" className="text-[20px] font-bold mx-2">
           Dashboard
         </Link>

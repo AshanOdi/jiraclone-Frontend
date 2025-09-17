@@ -1,7 +1,6 @@
+import Board from "../components/board";
+import IssueCard from "../components/issueCard";
+
 export default function AllIssuePage() {
-  return (
-    <div>
-      <h1>this is All Issue</h1>
-    </div>
-  );
+  return <Board />;
 }
