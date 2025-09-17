@@ -30,6 +30,26 @@ export const initialData = [
       updatedAt: "2025-09-17T08:38:10.323103",
     },
   ],
-  [],
-  [],
+  [
+    {
+      id: 1,
+      title: "test not working",
+      description: "test2, test2  ",
+      type: "BUG",
+      status: "WAITING_ON_CLIENT",
+      createdAt: "2025-09-16T23:46:22.86559",
+      updatedAt: "2025-09-17T08:38:10.323103",
+    },
+  ],
+  [
+    {
+      id: 1,
+      title: "test not working",
+      description: "test2, test2  ",
+      type: "BUG",
+      status: "RESOLVED",
+      createdAt: "2025-09-16T23:46:22.86559",
+      updatedAt: "2025-09-17T08:38:10.323103",
+    },
+  ],
 ];
