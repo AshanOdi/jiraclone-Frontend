@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react";
 import { initialData } from "../assets/sample";
 import Column from "./column";
+import axios from "axios";
 
 export default function Board() {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  console.log("sdasasdsd", data);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/issues/cat")
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [loading]);
 
   return (
     <div className="w-full h-[calc(100dvh-80px)] flex flex-raw gap-4 p-6">
