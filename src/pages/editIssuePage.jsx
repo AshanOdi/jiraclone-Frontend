@@ -9,8 +9,8 @@ export default function EditIssuePage() {
   const [status, setStatus] = useState(location.state.status); // default
 
   return (
-    <div className="w-[500px] h-[700px] flex justify-center items-center ">
-      <form className="w-full max-w-md bg-white rounded-lg shadow-md p-6 ">
+    <div className=" w-[500px] h-[700px] flex justify-center items-center ">
+      <form className="backdrop-blur-md shadow-gray-600 w-full max-w-md rounded-lg shadow-2xl p-6 ">
         <h2 className="text-xl font-bold text-gray-700">Edit Issue</h2>
 
         {/* Title */}

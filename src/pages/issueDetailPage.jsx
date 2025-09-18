@@ -35,13 +35,10 @@ export default function IssueDetailPage() {
   console.log(location);
 
   return (
-    <div
-      className="h-[calc(100dvh-80px)] w-full flex flex-row
-   bg-gray-100 p-8"
-    >
+    <div className="h-[calc(100dvh-80px)] w-full flex flex-row p-8">
       <div>{console.log(location.state.title)}</div>
 
-      <div className="w-2/3 h-full bg-white shadow-lg rounded-xl p-6 mr-6">
+      <div className="w-2/3 h-full backdrop-blur-md shadow-lg shadow-gray-600 rounded-xl p-6 mr-6">
         <h1>{console.log(location.state.title)}</h1>
 
         <h1 className="text-2xl font-bold mb-4">{location.state.title}</h1>
@@ -50,7 +47,7 @@ export default function IssueDetailPage() {
         </p>
       </div>
 
-      <div className="  relative w-1/3 bg-white shadow-lg rounded-xl p-6 space-y-4">
+      <div className="  relative w-1/3 backdrop-blur-md shadow-lg shadow-gray-600 rounded-xl p-6 space-y-4">
         <div>
           <h3 className="text-sm font-semibold text-gray-500">Type</h3>
           <p className="text-lg">{location.state.type}</p>

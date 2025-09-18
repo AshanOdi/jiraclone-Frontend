@@ -7,8 +7,8 @@ export default function CreateIssuePage() {
   const [status, setStatus] = useState("OPEN"); // default
 
   return (
-    <div className="w-[500px] h-[700px] flex justify-center items-center ">
-      <form className="w-full max-w-md bg-white rounded-lg shadow-md p-6 ">
+    <div className=" w-[500px] h-[700px] flex justify-center items-center ">
+      <form className="w-full max-w-md backdrop-blur-md  rounded-lg shadow-2xl shadow-gray-600 p-6 ">
         <h2 className="text-xl font-bold text-gray-700">Create New Issue</h2>
 
         {/* Title */}
