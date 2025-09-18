@@ -4,9 +4,22 @@ import PieChart from "./pieChart";
 export default function SummeryBoard({ title, task }) {
   //   console.log(task.open_Issue);
 
+  const statusData = {
+    OPEN: task.OPEN,
+    IN_PROGRESS: task.IN_PROGRESS,
+    WAITING_ON_CLIENT: task.WAITING_ON_CLIENT,
+    RESOLVED: task.RESOLVED,
+  };
+
+  const typeData = {
+    BUG: task.BUG,
+    QUESTION: task.QUESTION,
+    IMPROVEMENT: task.IMPROVEMENT,
+  };
+
   return (
     <div className=" backdrop-blur-md w-1/2 rounded-lg shadow-2xl shadow-gray-600 flex flex-col items-center justify-center p-4 gap-4">
-      <div className="relative w-full h-1/3 rounded-md flex flex-row items-center justify-center gap-2 p-2">
+      <div className="relative backdrop-blur-md w-full h-1/3 rounded-md flex flex-row items-center justify-center gap-2 p-2">
         <p>Based on {title}</p>
         {title === "Type" ? (
           <>
@@ -25,8 +38,12 @@ export default function SummeryBoard({ title, task }) {
         )}
       </div>
 
-      <div className="bg-yellow-300 w-full h-2/3 rounded-md flex items-center justify-center">
-        <PieChart />
+      <div className=" w-full backdrop-blur-md h-2/3 rounded-md flex items-center justify-center">
+        {title === "Type" ? (
+          <PieChart title="Issue Type Distribution" dataObj={typeData} />
+        ) : (
+          <PieChart title="Issue Status Distribution" dataObj={statusData} />
+        )}
       </div>
     </div>
   );
