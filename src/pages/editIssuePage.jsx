@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function EditIssuePage() {
   const location = useLocation();
@@ -7,6 +7,7 @@ export default function EditIssuePage() {
   const [description, setDescription] = useState(location.state.description);
   const [type, setType] = useState(location.state.type);
   const [status, setStatus] = useState(location.state.status); // default
+  const navigate = useNavigate();
 
   return (
     <div className=" w-[500px] h-[700px] flex justify-center items-center ">
@@ -116,6 +117,9 @@ export default function EditIssuePage() {
 
         {/* Submit */}
         <button
+          onClick={() => {
+            navigate("/issue");
+          }}
           type="submit"
           className="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700"
         >

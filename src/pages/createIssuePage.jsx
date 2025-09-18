@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateIssuePage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("BUG");
   const [status, setStatus] = useState("OPEN"); // default
+  const navigate = useNavigate();
 
   return (
     <div className=" w-[500px] h-[700px] flex justify-center items-center ">
@@ -70,6 +72,9 @@ export default function CreateIssuePage() {
 
         {/* Submit */}
         <button
+          onClick={() => {
+            navigate("/home");
+          }}
           type="submit"
           className="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700"
         >

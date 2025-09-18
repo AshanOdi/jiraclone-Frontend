@@ -49,7 +49,7 @@ export default function Card({ task, setData }) {
           state: task,
         });
       }}
-      className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-green-00 cursor-pointer"
+      className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-gray-400 cursor-pointer"
     >
       <p className="font-semibold">{task.title}</p>
       <span
@@ -96,9 +96,9 @@ export default function Card({ task, setData }) {
             {(task.status === "OPEN" ||
               task.status === "WAITING_ON_CLIENT") && (
               <div
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   setOpen(false);
-                  Handler([0, 2]);
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >

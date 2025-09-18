@@ -1,11 +1,22 @@
-export default function CountCard() {
+import { useNavigate } from "react-router-dom";
+
+export default function CountCard({ title, count }) {
+  console.log(count);
+
+  const navigate = useNavigate();
+
   return (
-    <div className="w-1/4 h-[100px] bg-white  rounded-2xl shadow-lg m-3 flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div
+      onClick={() => {
+        navigate("/issue");
+      }}
+      className="w-1/4 h-[100px] bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-gray-400 cursor-pointer"
+    >
       <div>
-        <h1>Total Issues</h1>
+        <h1>{title}</h1>
       </div>
       <div>
-        <div className="text-2xl font-bold text-card-foreground">20</div>
+        <div className="text-2xl font-bold text-card-foreground">{count}</div>
       </div>
     </div>
   );
