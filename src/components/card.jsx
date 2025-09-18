@@ -49,10 +49,20 @@ export default function Card({ task, setData }) {
           state: task,
         });
       }}
-      className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-blue-500 cursor-pointer"
+      className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-green-00 cursor-pointer"
     >
       <p className="font-semibold">{task.title}</p>
-      <span className="text-xs bg-red-200 text-black px-2 py-1 rounded">
+      <span
+        className={`text-xs ${
+          task.type === "IMPROVEMENT"
+            ? "bg-green-100 text-green-800"
+            : task.type === "QUESTION"
+            ? "bg-yellow-100 text-yellow-800"
+            : task.type === "BUG"
+            ? "bg-red-100 text-orange-800"
+            : "bg-blue-100 text-blue-800"
+        } text-black px-2 py-1 rounded`}
+      >
         {task.type}
         {console.log(task.status)}
       </span>

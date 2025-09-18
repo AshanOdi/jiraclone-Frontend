@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaRegEdit } from "react-icons/fa";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 export default function IssueDetailPage() {
@@ -83,12 +84,18 @@ export default function IssueDetailPage() {
           <p>{new Date(location.state.updatedAt).toLocaleString()}</p>
         </div>
         <div className="gap-2 absolute bottom-5 right-5 flex flex-row ">
-          <Link
-            to="/edit"
+          <button
+            onClick={() => {
+              const item = location.state;
+              navigate("/edit", {
+                state: item,
+              });
+            }}
+            cursor="pointer"
             className=" bottom-5 right-5 cursor-pointer bg-green-500 text-xl text-white font-bold py-2 px-4 rounded"
           >
             Edit
-          </Link>
+          </button>
           <Link
             to="/create"
             className=" bottom-5 right-20 cursor-pointer bg-green-500 text-xl text-white font-bold py-2 px-4 rounded"

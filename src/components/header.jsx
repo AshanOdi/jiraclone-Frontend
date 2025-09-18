@@ -1,6 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { BiCart } from "react-icons/bi";
-import { BsCart3 } from "react-icons/bs";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -22,9 +20,9 @@ export default function Header() {
         <Link to="/issue" className="text-[20px] font-bold mx-2">
           Issues
         </Link>
-        <Link to="/history" className="text-[20px] font-bold mx-2">
+        {/* <Link to="/history" className="text-[20px] font-bold mx-2">
           Issue History
-        </Link>
+        </Link> */}
         <Link to="/create" className="text-[20px] font-bold mx-2">
           Add Issue
         </Link>

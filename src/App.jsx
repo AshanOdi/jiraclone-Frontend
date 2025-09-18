@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <div className="w-full h-screen flex flex-col">
         <Header />
-        <div className="w-full h-[calc(100vh-20px)] flex items-center justify-center">
+        <div className="w-full h-[calc(100vh-20px)] bg-[url('/bgimg.jpg')] bg-center bg-cover flex items-center justify-center">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/issue" element={<AllIssuePage />} />
