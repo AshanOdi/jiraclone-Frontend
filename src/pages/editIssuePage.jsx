@@ -9,6 +9,8 @@ export default function EditIssuePage() {
   const [status, setStatus] = useState(location.state.status); // default
   const navigate = useNavigate();
 
+  async function UpdateIssue() {}
+
   return (
     <div className=" w-[500px] h-[700px] flex justify-center items-center ">
       <form className="backdrop-blur-md shadow-gray-600 w-full max-w-md rounded-lg shadow-2xl p-6 ">
@@ -117,9 +119,7 @@ export default function EditIssuePage() {
 
         {/* Submit */}
         <button
-          onClick={() => {
-            navigate("/issue");
-          }}
+          onClick={UpdateIssue}
           type="submit"
           className="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700"
         >

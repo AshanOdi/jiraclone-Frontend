@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +8,22 @@ export default function CreateIssuePage() {
   const [type, setType] = useState("BUG");
   const [status, setStatus] = useState("OPEN"); // default
   const navigate = useNavigate();
+
+  async function CreateIssue(e) {
+    e.preventDefault(); // Prevent default form submission
+    try {
+      const issue = {
+        title,
+        description,
+        type,
+        status,
+      };
+      await axios.post("http://localhost:8080/api/issues", issue);
+      navigate("/issue");
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className=" w-[500px] h-[700px] flex justify-center items-center ">
@@ -19,7 +36,7 @@ export default function CreateIssuePage() {
           <input
             placeholder="ex : Login Page Error"
             type="text"
-            // value={title}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
             className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 "
@@ -33,7 +50,7 @@ export default function CreateIssuePage() {
           </label>
           <textarea
             placeholder="ex : adad asdadad asdadad"
-            // value={description}
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             rows="4"
@@ -45,7 +62,7 @@ export default function CreateIssuePage() {
         <div>
           <label className="block text-sm font-medium mb-1 p-2">Type</label>
           <select
-            // value={type}
+            value={type}
             onChange={(e) => setType(e.target.value)}
             className="w-full border rounded px-3 py-2"
           >
@@ -72,9 +89,7 @@ export default function CreateIssuePage() {
 
         {/* Submit */}
         <button
-          onClick={() => {
-            navigate("/home");
-          }}
+          onClick={CreateIssue}
           type="submit"
           className="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700"
         >
