@@ -1,17 +1,3 @@
-// export default function Card({ task }) {
-//   return (
-//     <div className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-blue-500">
-//       <p className="font-semibold">{task.title}</p>
-//       <span className="text-xs bg-yellow-200 text-black px-2 py-1 rounded">
-//         {task.label}
-//         {console.log(task.status)}
-//       </span>
-//       <p className="text-xs text-gray-500 mt-1">{task.id}</p>
-//       {/* add a drop down here */}
-//     </div>
-//   );
-// }
-
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +7,7 @@ export default function Card({ task, setData }) {
 
   //   const dropdownRef = useRef(null);
 
+  //wena thanak ebuwama dropdown ek ain wena
   //   useEffect(() => {
   //     // Function to close the dropdown if a click is outside
   //     const handleClickOutside = (event) => {
@@ -40,24 +27,27 @@ export default function Card({ task, setData }) {
   //     };
   //   }, [open]);
 
-  function Handler(...args) {
-    console.log();
-    setOpen(false);
-    setData((prevData) => {
-      return prevData.map((issue) => {
-        console.log(issue);
-        if (issue.id === task.id) {
-          return { ...issue, status: "IN_PROGRESS" };
-        }
-        return issue;
-      });
-    });
-  }
+  //rerender scean eka
+  //   function Handler(...args) {
+  //     console.log();
+  //     setOpen(false);
+  //     setData((prevData) => {
+  //       return prevData.map((issue) => {
+  //         console.log(issue);
+  //         if (issue.id === task.id) {
+  //           return { ...issue, status: "IN_PROGRESS" };
+  //         }
+  //         return issue;
+  //       });
+  //     });
+  //   }
 
   return (
     <div
       onClick={() => {
-        navigate("/detail");
+        navigate("/detail", {
+          state: task,
+        });
       }}
       className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-blue-500 cursor-pointer"
     >
