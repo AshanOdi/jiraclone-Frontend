@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export default function CountCard({ title, count }) {
-  console.log(count);
+  // console.log(count);
 
   const navigate = useNavigate();
 

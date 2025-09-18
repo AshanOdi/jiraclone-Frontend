@@ -1,9 +1,44 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import SummeryBoard from "../components/summeryBoard";
-import { allData } from "../assets/allData";
-import { useState } from "react";
 
 export default function HomePage() {
-  const [data, setData] = useState(allData);
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/issues")
+      .then((res) => {
+        const issues = res.data;
+        const summary = {
+          totala_Issue: issues.length,
+          OPEN: 0,
+          IN_PROGRESS: 0,
+          WAITING_ON_CLIENT: 0,
+          RESOLVED: 0,
+          BUG: 0,
+          QUESTION: 0,
+          IMPROVEMENT: 0,
+        };
+
+        issues.forEach((issue) => {
+          if (summary.hasOwnProperty(issue.status)) {
+            summary[issue.status]++;
+          }
+          if (summary.hasOwnProperty(issue.type)) {
+            summary[issue.type]++;
+          }
+        });
+
+        setData(summary);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching issues:", err);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="flex w-full h-full p-4 gap-4">
