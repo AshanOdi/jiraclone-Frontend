@@ -4,7 +4,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full h-[80px] shadow-2xl flex items-center">
+    <header className="w-full h-[80px] shadow-2xl flex items-center px-4">
       <img
         className="w-[70px] h-[70px] object-cover cursor-pointer mx-2"
         src="/Logo-jira.png"
@@ -13,20 +13,44 @@ export default function Header() {
           navigate("/");
         }}
       />
-      <div className="w-[calc(100%-80px)] h-full flex justify-center items-center ">
-        <Link to="/" className="text-[20px] font-bold mx-2">
+      <nav
+        className="w-[calc(100%-80px)] h-full flex justify-center items-center  gap-8
+      "
+      >
+        {/* <Link to="/" className="text-[20px] font-bold mx-2">
+          Dashboard
+        </Link> */}
+        <Link
+          to="/"
+          className="relative text-xl font-bold text-gray-800 
+               hover:text-blue-600
+               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-blue-600 after:left-0 after:-bottom-1 
+               hover:after:w-full after:transition-all after:duration-300"
+        >
           Dashboard
         </Link>
-        <Link to="/issue" className="text-[20px] font-bold mx-2">
+        <Link
+          to="/issue"
+          className="relative text-xl font-bold text-gray-800 
+               hover:text-blue-600
+               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-blue-600 after:left-0 after:-bottom-1 
+               hover:after:w-full after:transition-all after:duration-300"
+        >
           Issues
         </Link>
         {/* <Link to="/history" className="text-[20px] font-bold mx-2">
           Issue History
         </Link> */}
-        <Link to="/create" className="text-[20px] font-bold mx-2">
+        <Link
+          to="/create"
+          className="relative text-xl font-bold text-gray-800 
+               hover:text-blue-600
+               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-blue-600 after:left-0 after:-bottom-1 
+               hover:after:w-full after:transition-all after:duration-300"
+        >
           Add Issue
         </Link>
-      </div>
+      </nav>
       <div className="w-[80px] flex justify-center items-center">
         <Link to="/cart" className="text-[20px] font-bold mx-2">
           {/* Add Profile or Something */}
