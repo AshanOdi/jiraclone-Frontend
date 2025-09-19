@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function EditIssuePage() {
   const location = useLocation();
@@ -26,6 +27,7 @@ export default function EditIssuePage() {
         `http://localhost:8080/api/issues/${location.state.id}`,
         updatedIssue
       );
+      toast.success("Successfully Updated Issue!");
 
       navigate("/issue");
     } catch (err) {

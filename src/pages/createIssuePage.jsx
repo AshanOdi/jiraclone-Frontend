@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateIssuePage() {
@@ -19,6 +20,7 @@ export default function CreateIssuePage() {
         status,
       };
       await axios.post("http://localhost:8080/api/issues", issue);
+      toast.success("Successfully Created Issue!");
       navigate("/issue");
     } catch (err) {
       console.log(err);

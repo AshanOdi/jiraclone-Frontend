@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function Card({ task, setData }) {
@@ -115,7 +116,7 @@ export default function Card({ task, setData }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpen(false);
-
+                  toast.success("Status Changed Successfully!");
                   UpdateStatus("IN_PROGRESS");
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
@@ -129,7 +130,7 @@ export default function Card({ task, setData }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpen(!open);
-
+                  toast.success("Status Changed Successfully!");
                   UpdateStatus("WAITING_ON_CLIENT");
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
@@ -144,7 +145,7 @@ export default function Card({ task, setData }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpen(!open);
-
+                  toast.success("Hurray, successfully Solved Issue!");
                   UpdateStatus("RESOLVED");
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
