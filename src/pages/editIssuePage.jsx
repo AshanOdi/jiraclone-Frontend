@@ -23,11 +23,15 @@ export default function EditIssuePage() {
         status,
       };
 
-      await axios.put(
-        `http://localhost:8080/api/issues/${location.state.id}`,
-        updatedIssue
-      );
-      toast.success("Successfully Updated Issue!");
+      await axios
+        .put(
+          `http://localhost:8080/api/issues/${location.state.id}`,
+          updatedIssue
+        )
+        .then(() => {
+          toast.success("Issue Updated Successfully!");
+        })
+        .catch((err) => console.log(err));
 
       navigate("/issue");
     } catch (err) {

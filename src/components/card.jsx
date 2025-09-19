@@ -12,10 +12,11 @@ export default function Card({ task, setData }) {
     try {
       await axios
         .delete(`http://localhost:8080/api/issues/${task.id}`)
-        .then(() => console.log("res"))
+        .then(() => {
+          toast.success("Resolved Issue Deleted Successfully!");
+          setData((prev) => prev.filter((issue) => issue.id !== task.id));
+        })
         .catch((err) => console.log(err));
-
-      setData((prev) => prev.filter((issue) => issue.id !== task.id));
     } catch (err) {
       console.log(err);
     }

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { IoTrashBinOutline } from "react-icons/io5";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function IssueDetailPage() {
   const location = useLocation();
@@ -33,7 +35,21 @@ export default function IssueDetailPage() {
   //     </div>
   //   );
   // }
-  console.log(location);
+  async function DeleteIssue(e) {
+    e.stopPropagation();
+    try {
+      await axios
+        .delete(`http://localhost:8080/api/issues/${location.state.id}`)
+        .then(() => {
+          toast.success("Status Deleted Successfully!");
+
+          navigate("/issue");
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="h-[calc(100dvh-80px)] w-full flex flex-row p-8">
@@ -113,6 +129,9 @@ export default function IssueDetailPage() {
             Add New
           </Link>
           <IoTrashBinOutline
+            onClick={(e) => {
+              DeleteIssue(e);
+            }}
             title="DELETE"
             className="w-[50px] h-[50px] cursor-pointer"
           />
