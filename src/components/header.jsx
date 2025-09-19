@@ -20,7 +20,11 @@ export default function Header() {
             src="/Logo-jira.png"
             alt="logo"
           />
-          <img className=" h-[50px] object-cover " src="/name.png" alt="name" />
+          <img
+            className=" h-[50px] object-cover mx-2 my-3 "
+            src="/name.png"
+            alt="name"
+          />
         </div>
 
         {/* <Link to="/" className="text-[20px] font-bold mx-2">

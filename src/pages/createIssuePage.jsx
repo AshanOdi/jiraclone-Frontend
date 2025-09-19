@@ -54,7 +54,7 @@ export default function CreateIssuePage() {
             Description
           </label>
           <textarea
-            placeholder="ex : adad asdadad asdadad"
+            placeholder="ex : Do not work login button"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
