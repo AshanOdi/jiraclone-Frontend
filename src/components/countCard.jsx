@@ -10,7 +10,7 @@ export default function CountCard({ title, count }) {
       onClick={() => {
         navigate("/issue");
       }}
-      className="w-1/4 h-[100px] bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-gray-400 cursor-pointer"
+      className="w-1/4 h-[100px] backdrop-blur-xs shadow-lg shadow-gray-500 rounded-xl p-3 mb-3 border-l-4 border-orange-400 cursor-pointer"
     >
       <div>
         <h1>{title}</h1>

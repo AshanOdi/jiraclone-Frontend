@@ -16,8 +16,8 @@ export default function Header() {
           className=" cursor-pointer absolute top-1 left-1 flex flex-row items-center"
         >
           <img
-            className="w-[70px] h-[70px] object-cover cursor-pointer mx-2 transition-transform duration-500 ease-in-out hover:rotate-180"
-            src="/Logo-jira.png"
+            className="w-[75px] h-[72px] object-cover cursor-pointer mx-2 transition-transform duration-500 ease-in-out hover:rotate-180"
+            src="/log.png"
             alt="logo"
           />
           <img
@@ -33,8 +33,8 @@ export default function Header() {
         <Link
           to="/"
           className="relative text-xl font-bold text-gray-800 
-               hover:text-blue-600
-               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-blue-600 after:left-0 after:-bottom-1 
+               hover:text-orange-400
+               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-orange-400 after:left-0 after:-bottom-1 
                hover:after:w-full after:transition-all after:duration-300"
         >
           DASHBOARD
@@ -42,8 +42,8 @@ export default function Header() {
         <Link
           to="/issue"
           className="relative text-xl font-bold text-gray-800 
-               hover:text-blue-600
-               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-blue-600 after:left-0 after:-bottom-1 
+               hover:text-orange-400
+               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-orange-400 after:left-0 after:-bottom-1 
                hover:after:w-full after:transition-all after:duration-300"
         >
           ISSUE BOARD
@@ -54,8 +54,8 @@ export default function Header() {
         <Link
           to="/create"
           className="relative text-xl font-bold text-gray-800 
-               hover:text-blue-600
-               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-blue-600 after:left-0 after:-bottom-1 
+               hover:text-orange-400
+               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-orange-400 after:left-0 after:-bottom-1 
                hover:after:w-full after:transition-all after:duration-300"
         >
           ADD NEW

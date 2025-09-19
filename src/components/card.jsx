@@ -67,7 +67,7 @@ export default function Card({ task, setData }) {
           state: task,
         });
       }}
-      className="bg-white shadow-md rounded-xl p-3 mb-3 border-l-4 border-gray-400 cursor-pointer"
+      className="backdrop-blur-xs shadow-lg shadow-gray-500 rounded-xl p-3 mb-3 border-l-4 border-orange-400 cursor-pointer"
     >
       <p className="font-semibold">{task.title}</p>
       <span

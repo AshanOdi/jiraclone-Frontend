@@ -18,8 +18,8 @@ export default function SummeryBoard({ title, task }) {
   };
 
   return (
-    <div className="  backdrop-blur-md w-1/2 rounded-lg shadow-2xl shadow-gray-600 flex flex-col items-center justify-center p-4 gap-4">
-      <div className="relative backdrop-blur-md w-full h-1/3 rounded-md flex flex-row items-center justify-center gap-2 p-2">
+    <div className=" backdrop-blur-xxs shadow-lg shadow-gray-400 w-1/2 rounded-lg   flex flex-col items-center justify-center p-4 gap-4">
+      <div className="relative  w-full h-1/3 rounded-md flex flex-row items-center justify-center gap-2 p-2">
         <p className="text-xl font-bold  mb-4 absolute top-2 left-2">
           Based on {title}
         </p>
@@ -41,7 +41,7 @@ export default function SummeryBoard({ title, task }) {
         )}
       </div>
 
-      <div className=" w-full backdrop-blur-xl h-2/3 rounded-md flex items-center justify-center">
+      <div className=" w-full  h-2/3 rounded-md flex items-center justify-center">
         {title === "Type" ? (
           <PieChart title="Type Distribution" dataObj={typeData} />
         ) : (

@@ -113,16 +113,16 @@ export default function IssueDetailPage() {
       <div className="w-1/3 relative backdrop-blur-md shadow-lg shadow-gray-600 rounded-xl p-6 flex flex-col gap-4">
         <button
           onClick={() => navigate("/edit", { state: location.state })}
-          className="bg-green-500 text-white font-bold py-2 px-4 rounded"
+          className="bg-green-500 text-white font-bold py-2 px-2 rounded"
         >
           Edit
         </button>
-        <Link
-          to="/create"
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded "
+        <button
+          onClick={() => navigate("/create")}
+          className="bg-blue-500 text-white font-bold py-2 px-2 rounded "
         >
           Add New
-        </Link>
+        </button>
         <IoTrashBinOutline
           onClick={(e) => DeleteIssue(e)}
           title="DELETE"

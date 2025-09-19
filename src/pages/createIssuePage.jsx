@@ -31,7 +31,7 @@ export default function CreateIssuePage() {
     <div className=" w-[500px] h-[700px] flex justify-center items-center ">
       <form
         onSubmit={CreateIssue}
-        className="w-full max-w-md backdrop-blur-md  rounded-lg shadow-2xl shadow-gray-600 p-6 "
+        className="w-full max-w-md backdrop-blur-xs  rounded-lg shadow-2xl shadow-gray-600 p-6 "
       >
         <h2 className="text-xl font-bold text-gray-700">Create New Issue</h2>
 
