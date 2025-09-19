@@ -13,14 +13,14 @@ export default function Footer() {
           Dashboard
         </Link> */}
         <Link
-          to="/"
+          to="/contact"
           className="relative text-lg  text-gray-800 
-               0"
+               "
         >
           Contact Us
         </Link>
         <Link
-          to="/issue"
+          to="/contact"
           className="relative text-lg  text-gray-800 
                "
         >
@@ -30,7 +30,7 @@ export default function Footer() {
           Issue History
         </Link> */}
         <Link
-          to="/create"
+          to="/contact"
           className="relative text-lg  text-gray-800 
                "
         >

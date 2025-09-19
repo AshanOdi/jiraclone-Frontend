@@ -41,7 +41,7 @@ export default function SummeryBoard({ title, task }) {
         )}
       </div>
 
-      <div className=" w-full backdrop-blur-md h-2/3 rounded-md flex items-center justify-center">
+      <div className=" w-full backdrop-blur-xl h-2/3 rounded-md flex items-center justify-center">
         {title === "Type" ? (
           <PieChart title="Type Distribution" dataObj={typeData} />
         ) : (

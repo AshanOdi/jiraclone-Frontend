@@ -29,7 +29,7 @@ export default function PieChart({ title, dataObj }) {
   };
 
   return (
-    <div className="w-full max-w-md bg-white shadow-md rounded p-4">
+    <div className="w-full flex flex-col justify-center items-center max-w-md rounded p-4">
       <h2 className="text-lg font-semibold mb-4">{title}</h2>
       <Pie data={chartData} />
     </div>

@@ -8,6 +8,7 @@ import IssueDetailPage from "./pages/issueDetailPage";
 import Header from "./components/header";
 import IssueHistoryPage from "./pages/issueHistoryPage";
 import { Toaster } from "react-hot-toast";
+import Contact from "./pages/contactPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/create" element={<CreateIssuePage />} />
             <Route path="/detail" element={<IssueDetailPage />} />
             <Route path="/history" element={<IssueHistoryPage />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>
