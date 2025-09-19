@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -5,42 +6,42 @@ export default function Card({ task, setData }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
-  //   const dropdownRef = useRef(null);
+  async function UpdateStatus(newStatus) {
+    try {
+      const updatedIssue = { status: newStatus };
+      const res = await axios.put(
+        `http://localhost:8080/api/issues/${task.id}/status`,
+        updatedIssue
+      );
 
-  //wena thanak ebuwama dropdown ek ain wena
-  //   useEffect(() => {
-  //     // Function to close the dropdown if a click is outside
-  //     const handleClickOutside = (event) => {
-  //       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-  //         setOpen(false);
-  //       }
+      setData((prev) =>
+        prev.map((issue) =>
+          issue.id === task.id ? { ...issue, status: res.data.status } : issue
+        )
+      );
+
+      setOpen(false);
+      // navigate("/issue");
+    } catch (err) {
+      console.error("Failed to update issue:", err);
+    }
+  }
+  // async function UpdateIssue() {
+  //   try {
+  //     const updatedIssue = {
+  //       status,
   //     };
-
-  //     // Add event listener when the dropdown is open
-  //     if (open) {
-  //       document.addEventListener("mousedown", handleClickOutside);
-  //     }
-
-  //     // Clean up the event listener when the component unmounts
-  //     return () => {
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //     };
-  //   }, [open]);
-
-  //rerender scean eka
-  //   function Handler(...args) {
-  //     console.log();
+  //     console.log(updatedIssue);
+  //     await axios.put(
+  //       `http://localhost:8080/api/issues/${task.id}/status`,
+  //       updatedIssue
+  //     );
+  //     navigate("/issue");
   //     setOpen(false);
-  //     setData((prevData) => {
-  //       return prevData.map((issue) => {
-  //         console.log(issue);
-  //         if (issue.id === task.id) {
-  //           return { ...issue, status: "IN_PROGRESS" };
-  //         }
-  //         return issue;
-  //       });
-  //     });
+  //   } catch (err) {
+  //     console.log(err);
   //   }
+  // }
 
   return (
     <div
@@ -99,6 +100,8 @@ export default function Card({ task, setData }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpen(false);
+
+                  UpdateStatus("IN_PROGRESS");
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >
@@ -111,6 +114,8 @@ export default function Card({ task, setData }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpen(!open);
+
+                  UpdateStatus("WAITING_ON_CLIENT");
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >
@@ -124,6 +129,8 @@ export default function Card({ task, setData }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setOpen(!open);
+
+                  UpdateStatus("RESOLVED");
                 }}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               >

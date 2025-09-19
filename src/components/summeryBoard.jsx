@@ -23,6 +23,7 @@ export default function SummeryBoard({ title, task }) {
         <p>Based on {title}</p>
         {title === "Type" ? (
           <>
+            <CountCard title="total" count={task.totala_Issue} />
             <CountCard title="open" count={task.OPEN} />
             <CountCard title="progress" count={task.IN_PROGRESS} />
             <CountCard title="progress" count={task.WAITING_ON_CLIENT} />

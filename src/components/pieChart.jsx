@@ -8,9 +8,9 @@ export default function PieChart({ title, dataObj }) {
   const values = Object.values(dataObj);
 
   const colors = [
-    "#ff6384",
-    "#36a2eb",
-    "#ffce56",
+    "#f02b2b",
+    "#eaee1d",
+    "#59eb4b",
     "#4bc0c0",
     "#9966ff",
     "#ff9f40",
