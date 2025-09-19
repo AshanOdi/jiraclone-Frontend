@@ -8,7 +8,7 @@ export default function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/issues")
+      .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
       .then((res) => {
         const issues = res.data;
         const summary = {

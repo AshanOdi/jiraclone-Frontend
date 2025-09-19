@@ -8,7 +8,7 @@ export default function Board() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/issues")
+      .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
       .then((res) => setData(res.data))
       .catch(console.log);
   }, []);

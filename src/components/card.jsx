@@ -11,7 +11,7 @@ export default function Card({ task, setData }) {
     e.stopPropagation();
     try {
       await axios
-        .delete(`http://localhost:8080/api/issues/${task.id}`)
+        .delete(import.meta.env.VITE_BACKEND_URL + `/api/issues/${task.id}`)
         .then(() => {
           toast.success("Resolved Issue Deleted Successfully!");
           setData((prev) => prev.filter((issue) => issue.id !== task.id));

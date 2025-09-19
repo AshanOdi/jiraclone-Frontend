@@ -8,38 +8,14 @@ import axios from "axios";
 export default function IssueDetailPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  // const { id } = useParams(); // get issue ID from route like /detail/:id
-  // const [issue, setIssue] = useState(null);
 
-  // useEffect(() => {
-  // const fetchIssue = async () => {
-  //   try {
-  //     const res = await fetch(`http://localhost:8080/api/issues/${id}`);
-  //     if (res.ok) {
-  //       const data = await res.json();
-  //       setIssue(data);
-  //     } else {
-  //       console.error("Failed to fetch issue details");
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-  // fetchIssue();
-  // }, [id]);
-
-  // if (!issue) {
-  //   return (
-  //     <div className="flex justify-center items-center h-screen">
-  //       <p className="text-gray-500">Loading issue details...</p>
-  //     </div>
-  //   );
-  // }
   async function DeleteIssue(e) {
     e.stopPropagation();
     try {
       await axios
-        .delete(`http://localhost:8080/api/issues/${location.state.id}`)
+        .delete(
+          import.meta.env.VITE_BACKEND_URL + `/api/issues/${location.state.id}`
+        )
         .then(() => {
           toast.success("Status Deleted Successfully!");
 

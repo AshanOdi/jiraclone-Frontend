@@ -19,7 +19,7 @@ export default function CreateIssuePage() {
         type,
         status,
       };
-      await axios.post("http://localhost:8080/api/issues", issue);
+      await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/issues", issue);
       toast.success("Successfully Created Issue!");
       navigate("/issue");
     } catch (err) {

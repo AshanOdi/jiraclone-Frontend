@@ -25,7 +25,7 @@ export default function EditIssuePage() {
 
       await axios
         .put(
-          `http://localhost:8080/api/issues/${location.state.id}`,
+          import.meta.env.VITE_BACKEND_URL + `/api/issues/${location.state.id}`,
           updatedIssue
         )
         .then(() => {
