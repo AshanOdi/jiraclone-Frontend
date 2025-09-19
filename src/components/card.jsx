@@ -92,25 +92,32 @@ export default function Card({ task, setData }) {
       </p>
 
       {/* Dropdown */}
-      <div className="relative mt-3">
+      <div
+        onMouseEnter={() => {
+          setOpen(true);
+        }}
+        onMouseLeave={() => {
+          setOpen(false);
+        }}
+        className="relative mt-3"
+      >
         {/* Button */}
         {task.status !== "RESOLVED" && (
-          <button
+          <div
             onClick={(e) => {
               e.stopPropagation();
-              setOpen(!open);
             }}
             className="border border-gray-400 px-4 py-2 rounded cursor-pointer font-bold
           flex justify-between items-center  bg-white shadow"
           >
             Next State
             <span className="ml-2">▼</span>
-          </button>
+          </div>
         )}
 
         {/* Dropdown menu */}
         {open && (
-          <div className="absolute top-[45px] left-0 w-[180px] bg-white border border-gray-300 rounded shadow-md z-10">
+          <div className="absolute top-[42px] left-0 w-[180px] bg-white border border-gray-300 rounded shadow-md z-10">
             {(task.status === "OPEN" ||
               task.status === "WAITING_ON_CLIENT") && (
               <div

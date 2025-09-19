@@ -18,10 +18,19 @@ export default function SummeryBoard({ title, task }) {
   };
 
   return (
-    <div className=" backdrop-blur-md w-1/2 rounded-lg shadow-2xl shadow-gray-600 flex flex-col items-center justify-center p-4 gap-4">
+    <div className="  backdrop-blur-md w-1/2 rounded-lg shadow-2xl shadow-gray-600 flex flex-col items-center justify-center p-4 gap-4">
       <div className="relative backdrop-blur-md w-full h-1/3 rounded-md flex flex-row items-center justify-center gap-2 p-2">
-        <p>Based on {title}</p>
+        <p className="text-xl font-bold  mb-4 absolute top-2 left-2">
+          Based on {title}
+        </p>
         {title === "Type" ? (
+          <>
+            <CountCard title="total" count={task.totala_Issue} />
+            <CountCard title="bug" count={task.BUG} />
+            <CountCard title="questions" count={task.QUESTION} />
+            <CountCard title="improvement" count={task.IMPROVEMENT} />
+          </>
+        ) : (
           <>
             <CountCard title="total" count={task.totala_Issue} />
             <CountCard title="open" count={task.OPEN} />
@@ -29,21 +38,14 @@ export default function SummeryBoard({ title, task }) {
             <CountCard title="progress" count={task.WAITING_ON_CLIENT} />
             <CountCard title="resolved" count={task.RESOLVED} />
           </>
-        ) : (
-          <>
-            <CountCard title="total" count={task.totala_Issue} />
-            <CountCard title="bug" count={task.BUG} />
-            <CountCard title="questions" count={task.QUESTION} />
-            <CountCard title="improvement" count={task.IMPROVEMENT} />
-          </>
         )}
       </div>
 
       <div className=" w-full backdrop-blur-md h-2/3 rounded-md flex items-center justify-center">
         {title === "Type" ? (
-          <PieChart title="Issue Type Distribution" dataObj={typeData} />
+          <PieChart title="Type Distribution" dataObj={typeData} />
         ) : (
-          <PieChart title="Issue Status Distribution" dataObj={statusData} />
+          <PieChart title="Status Distribution" dataObj={statusData} />
         )}
       </div>
     </div>

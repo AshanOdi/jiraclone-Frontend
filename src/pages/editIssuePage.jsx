@@ -40,7 +40,7 @@ export default function EditIssuePage() {
   }
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="w-1/2  flex justify-center items-center ">
       <form
         onSubmit={UpdateIssue}
         className="backdrop-blur-md bg-white/10 shadow-gray-600 w-full max-w-md rounded-lg shadow-2xl p-6"

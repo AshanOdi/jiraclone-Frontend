@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SummeryBoard from "../components/summeryBoard";
+import Footer from "../components/footer";
 
 export default function HomePage() {
   const [data, setData] = useState({});
@@ -41,9 +42,13 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex w-full h-full p-4 gap-4">
-      <SummeryBoard title="Type" task={data} />
-      <SummeryBoard title="Status" task={data} />
+    <div className="flex w-full h-full flex flex-col ">
+      <div className="flex flex-row w-full h-full p-4 gap-4">
+        <SummeryBoard title="Type" task={data} />
+        <SummeryBoard title="Status" task={data} />
+      </div>
+
+      <Footer />
     </div>
   );
 }
