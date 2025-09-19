@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { IoTrashBinOutline } from "react-icons/io5";
 
 export default function IssueDetailPage() {
   const location = useLocation();
@@ -111,6 +112,10 @@ export default function IssueDetailPage() {
           >
             Add New
           </Link>
+          <IoTrashBinOutline
+            title="DELETE"
+            className="w-[50px] h-[50px] cursor-pointer"
+          />
         </div>
       </div>
     </div>
