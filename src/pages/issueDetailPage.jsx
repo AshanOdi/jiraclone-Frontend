@@ -50,7 +50,19 @@ export default function IssueDetailPage() {
       <div className="  relative w-1/3 backdrop-blur-md shadow-lg shadow-gray-600 rounded-xl p-6 space-y-4">
         <div>
           <h3 className="text-sm font-semibold text-gray-500">Type</h3>
-          <p className="text-lg">{location.state.type}</p>
+          <p
+            className={`text-lg inline-block px-3 py-1 rounded  font-medium ${
+              location.state.type === "BUG"
+                ? "bg-red-100 text-red-800"
+                : location.state.type === "QUESTION"
+                ? "bg-yellow-100 text-yellow-800"
+                : location.state.type === "IMPROVEMENT"
+                ? "bg-green-100 text-green-800"
+                : "bg-blue-100 text-blue-800"
+            }`}
+          >
+            {location.state.type}
+          </p>
         </div>
 
         <div>
@@ -59,11 +71,11 @@ export default function IssueDetailPage() {
             className={`inline-block px-3 py-1 rounded text-sm font-medium
               ${
                 location.state.status === "OPEN"
-                  ? "bg-green-100 text-green-800"
+                  ? "bg-red-100 text-red-800"
                   : location.state.status === "IN_PROGRESS"
                   ? "bg-yellow-100 text-yellow-800"
                   : location.state.status === "WAITING_ON_CLIENT"
-                  ? "bg-orange-100 text-orange-800"
+                  ? "bg-green-100 text-green-800"
                   : "bg-blue-100 text-blue-800"
               }`}
           >

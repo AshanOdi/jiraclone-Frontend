@@ -6,6 +6,37 @@ export default function Card({ task, setData }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
+  async function DeleteIssue(e) {
+    e.stopPropagation();
+    try {
+      await axios
+        .delete(`http://localhost:8080/api/issues/${task.id}`)
+        .then(() => console.log("res"))
+        .catch((err) => console.log(err));
+
+      setData((prev) => prev.filter((issue) => issue.id !== task.id));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // async function UpdateIssue() {
+  //   try {
+  //     const updatedIssue = {
+  //       status,
+  //     };
+  //     console.log(updatedIssue);
+  //     await axios.put(
+  //       `http://localhost:8080/api/issues/${task.id}/status`,
+  //       updatedIssue
+  //     );
+  //     navigate("/issue");
+  //     setOpen(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
   async function UpdateStatus(newStatus) {
     try {
       const updatedIssue = { status: newStatus };
@@ -26,22 +57,6 @@ export default function Card({ task, setData }) {
       console.error("Failed to update issue:", err);
     }
   }
-  // async function UpdateIssue() {
-  //   try {
-  //     const updatedIssue = {
-  //       status,
-  //     };
-  //     console.log(updatedIssue);
-  //     await axios.put(
-  //       `http://localhost:8080/api/issues/${task.id}/status`,
-  //       updatedIssue
-  //     );
-  //     navigate("/issue");
-  //     setOpen(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
   return (
     <div
@@ -140,6 +155,23 @@ export default function Card({ task, setData }) {
           </div>
         )}
       </div>
+
+      {/* Delete Button */}
+      {task.status === "RESOLVED" && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("Delete clicked");
+            DeleteIssue(e);
+          }}
+          className=" bottom-3 right-3 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 group"
+          title="DELETE"
+        >
+          <span className="text-white text-xs font-bold  group-hover:block">
+            X
+          </span>
+        </div>
+      )}
     </div>
   );
 }
