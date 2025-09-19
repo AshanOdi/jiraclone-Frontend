@@ -1,11 +1,14 @@
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function PieChart({ title, dataObj }) {
   const labels = Object.keys(dataObj);
   const values = Object.values(dataObj);
+
+  const navigate = useNavigate();
 
   const colors = [
     "#f02b2b",
@@ -29,10 +32,7 @@ export default function PieChart({ title, dataObj }) {
   };
 
   return (
-    <div
-      onClick={navigate("/issue")}
-      className="w-full flex flex-col justify-center items-center max-w-md rounded p-4"
-    >
+    <div className="w-full flex flex-col justify-center items-center max-w-md rounded p-4">
       <h2 className="text-lg font-semibold mb-4">{title}</h2>
       <Pie data={chartData} />
     </div>
