@@ -1,12 +1,55 @@
-# React + Vite
+# FORGE. (Jira Clone) – Issue Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack issue tracking applicationinspired by Jira.  
+Built with Spring Boot + MySQL (backend) and React + Tailwind CSS (frontend).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create, view, update and delete issues
+- Track status changes (Open, In Progress, Waiting on Client, Resolved)
+- Automatically logs Issue History on every status change
+- Responsive UI with React + Tailwind CSS
+- REST API tested via Postman
+- Contact form integrated with Formspree to receive emails
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+| Frontend                            | Backend            |
+| ----------------------------------- | ------------------ |
+| React + React Router DOM            | Spring Boot        |
+| Tailwind CSS                        | JPA/Hibernate      |
+| Axios, React Hot Toast, React Icons | MySQL / PostgreSQL |
+| Formspree (Contact Form)            | Lombok             |
+
+---
+
+## Backend – Spring Boot
+
+### Prerequisites
+
+- Java
+- Maven
+- MySQL running locally
+
+### Setup
+
+Messages we are getting from Contact Us page
+
+formspree.com
+username : forgeentgra@gmail.com
+password : Abcd1234#
+
+### Setup
+
+1. Clone the repo
+
+   git clone https://github.com/AshanOdi/jiraclone-Frontend.git
+   cd jiraclone-Frontend
+   npm run dev
+
+1. Clone the repo
+   git clone https://github.com/AshanOdi/jiraclone-Backend.git
+   install maven
+   run intellij
