@@ -5,8 +5,9 @@ import Footer from "../components/footer";
 
 export default function HomePage() {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
+  // Fetch issues and calculate summary on component mount
   useEffect(() => {
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
@@ -23,6 +24,7 @@ export default function HomePage() {
           IMPROVEMENT: 0,
         };
 
+        // Calculate counts for each status and type
         issues.forEach((issue) => {
           if (summary.hasOwnProperty(issue.status)) {
             summary[issue.status]++;
@@ -33,17 +35,18 @@ export default function HomePage() {
         });
 
         setData(summary);
-        setLoading(false);
+        // setLoading(false);
       })
       .catch((err) => {
         console.error("Error fetching issues:", err);
-        setLoading(false);
+        // setLoading(false);
       });
   }, []);
 
   return (
     <div className="flex w-full h-full flex flex-col ">
       <div className="flex flex-row w-full h-full p-4 gap-4">
+        {/* make two summery boards side by side */}
         <SummeryBoard title="Type" task={data} />
         <SummeryBoard title="Status" task={data} />
       </div>

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-export default function Card({ task, setData }) {
+export default function Card({ task, setData, setIsLoading }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -22,28 +22,12 @@ export default function Card({ task, setData }) {
     }
   }
 
-  // async function UpdateIssue() {
-  //   try {
-  //     const updatedIssue = {
-  //       status,
-  //     };
-  //     console.log(updatedIssue);
-  //     await axios.put(
-  //       `http://localhost:8080/api/issues/${task.id}/status`,
-  //       updatedIssue
-  //     );
-  //     navigate("/issue");
-  //     setOpen(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
-
+  // Update issue status
   async function UpdateStatus(newStatus) {
     try {
       const updatedIssue = { status: newStatus };
       const res = await axios.put(
-        `http://localhost:8080/api/issues/${task.id}/status`,
+        import.meta.env.VITE_BACKEND_URL + `/api/issues/${task.id}/status`,
         updatedIssue
       );
 
@@ -53,6 +37,9 @@ export default function Card({ task, setData }) {
         )
       );
 
+      setIsLoading(true);
+
+      //use setOpen to close the dropdown after status change
       setOpen(false);
       // navigate("/issue");
     } catch (err) {
@@ -67,9 +54,10 @@ export default function Card({ task, setData }) {
           state: task,
         });
       }}
-      className="backdrop-blur-xs shadow-lg shadow-gray-500 rounded-xl p-3 mb-3 border-l-4 border-orange-400 cursor-pointer"
+      className="relative  shadow-lg shadow-gray-500 rounded-xl p-3 mb-3 border-l-4 border-orange-400 cursor-pointer"
     >
       <p className="font-semibold">{task.title}</p>
+      <p className="text-gray-500">{task.customer}</p>
       <span
         className={`text-xs ${
           task.type === "IMPROVEMENT"
@@ -84,6 +72,7 @@ export default function Card({ task, setData }) {
         {task.type}
         {console.log(task.status)}
       </span>
+
       <p className="text-xs text-gray-500 mt-1">
         {task.updatedAt.split("T")[0]}
       </p>
@@ -111,13 +100,13 @@ export default function Card({ task, setData }) {
           flex justify-between items-center  bg-white shadow"
           >
             Next State
-            <span className="ml-2">▼</span>
+            <span>▼</span>
           </div>
         )}
 
         {/* Dropdown menu */}
         {open && (
-          <div className="absolute top-[42px] left-0 w-[180px] bg-white border border-gray-300 rounded shadow-md z-10">
+          <div className="absolute z-50 top-[42px] left-0 w-[180px] bg-white border border-gray-300 rounded shadow-md ">
             {(task.status === "OPEN" ||
               task.status === "WAITING_ON_CLIENT") && (
               <div

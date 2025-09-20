@@ -5,16 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 export default function CreateIssuePage() {
   const [title, setTitle] = useState("");
+  const [customer, setCustomer] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("BUG");
   const [status, setStatus] = useState("OPEN"); // default
   const navigate = useNavigate();
 
+  //creating new issue
   async function CreateIssue(e) {
     e.preventDefault(); // Prevent default form submission
     try {
       const issue = {
         title,
+        customer,
         description,
         type,
         status,
@@ -35,7 +38,7 @@ export default function CreateIssuePage() {
       >
         <h2 className="text-xl font-bold text-gray-700">Create New Issue</h2>
 
-        {/* Title */}
+        {/*getting title */}
         <div>
           <label className="block text-sm font-medium mb-1 p-2">Title</label>
           <input
@@ -48,7 +51,20 @@ export default function CreateIssuePage() {
           />
         </div>
 
-        {/* Description */}
+        {/*getting customer name*/}
+        <div>
+          <label className="block text-sm font-medium mb-1 p-2">Customer</label>
+          <input
+            placeholder="ex : Ashan"
+            type="text"
+            value={customer}
+            onChange={(e) => setCustomer(e.target.value)}
+            required
+            className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 "
+          />
+        </div>
+
+        {/*getting description */}
         <div>
           <label className="block text-sm font-medium mb-1 p-2">
             Description
@@ -63,7 +79,7 @@ export default function CreateIssuePage() {
           />
         </div>
 
-        {/* Type */}
+        {/* getting type */}
         <div>
           <label className="block text-sm font-medium mb-1 p-2">Type</label>
           <select
@@ -77,22 +93,7 @@ export default function CreateIssuePage() {
           </select>
         </div>
 
-        {/* Status */}
-        {/* <div>
-          <label className="block text-sm font-medium mb-1">Status</label>
-          <select
-            // value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="w-full border rounded px-3 py-2"
-          >
-            <option value="OPEN">Open</option>
-            <option value="IN_PROGRESS">In Progress</option>
-            <option value="WAITING_ON_CLIENT">Waiting on Client</option>
-            <option value="RESOLVED">Resolved</option>
-          </select>
-        </div> */}
-
-        {/* Submit */}
+        {/* Submit button */}
         <button
           type="submit"
           className="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700"

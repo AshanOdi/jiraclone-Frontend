@@ -70,6 +70,11 @@ export default function IssueDetailPage() {
           </div>
 
           <div>
+            <h3 className="text-sm  ">Customer Name</h3>
+            <p>{location.state.customer}</p>
+          </div>
+
+          <div>
             <h3 className="text-sm  ">Created At</h3>
             <p>{new Date(location.state.createdAt).toLocaleString()}</p>
           </div>
@@ -112,18 +117,21 @@ export default function IssueDetailPage() {
 
       <div className="w-1/3 relative backdrop-blur-md shadow-lg shadow-gray-600 rounded-xl p-6 flex flex-col gap-4">
         <button
+          //calling navigate function to go to edit issue page with state, we can access the state in edit issue page using location.state
           onClick={() => navigate("/edit", { state: location.state })}
           className="bg-green-500 text-white font-bold py-2 px-2 rounded"
         >
           Edit
         </button>
         <button
+          //calling navigate function to go to create issue page
           onClick={() => navigate("/create")}
           className="bg-blue-500 text-white font-bold py-2 px-2 rounded "
         >
           Add New
         </button>
         <IoTrashBinOutline
+          // calling delete function when click the trash icon
           onClick={(e) => DeleteIssue(e)}
           title="DELETE"
           className="w-[50px] h-[50px] cursor-pointer mt-auto"

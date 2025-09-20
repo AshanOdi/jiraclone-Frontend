@@ -1,3 +1,6 @@
+// sample data for testing purpose
+//used in board component for initial state
+
 export const initialData = [
   [
     {

@@ -2,15 +2,19 @@ import { useState } from "react";
 import axios from "axios"; // Import axios
 import toast from "react-hot-toast";
 
+// Contact page with a form to send messages and an about us section, About us and FAQ sections
 export default function Contact() {
+  //used to store form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
   const [status, setStatus] = useState("idle");
   const formEndpoint = "https://formspree.io/f/xnnbevro";
 
+  // sent form data to the formspree endpoint
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus("submitting");
@@ -30,6 +34,7 @@ export default function Contact() {
     }
   }
 
+  // get gata from input fields to setFormData
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,

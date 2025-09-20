@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+//exported from dashboard to show pie chart of issues based on different criteria
+// title and dataObj are passed as props
+//got from reference; just used
+
 export default function PieChart({ title, dataObj }) {
   const labels = Object.keys(dataObj);
   const values = Object.values(dataObj);

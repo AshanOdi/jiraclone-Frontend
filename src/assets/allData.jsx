@@ -1,3 +1,6 @@
+// Dummy data for issues summary creation
+//Dashboard testing
+
 export const allData = {
   totala_Issue: 20,
   open_Issue: 1,

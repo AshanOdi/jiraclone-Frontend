@@ -4,6 +4,8 @@ import PieChart from "./pieChart";
 export default function SummeryBoard({ title, task }) {
   //   console.log(task.open_Issue);
 
+  //dividing data into status and type for pie chart
+  //making two objects for status and type
   const statusData = {
     OPEN: task.OPEN,
     IN_PROGRESS: task.IN_PROGRESS,
@@ -43,6 +45,7 @@ export default function SummeryBoard({ title, task }) {
 
       <div className=" w-full  h-2/3 rounded-md flex items-center justify-center">
         {title === "Type" ? (
+          //totally copy pasted from pie chart documentation
           <PieChart title="Type Distribution" dataObj={typeData} />
         ) : (
           <PieChart title="Status Distribution" dataObj={statusData} />

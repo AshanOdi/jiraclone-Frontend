@@ -8,6 +8,7 @@ export default function EditIssuePage() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(location.state.title);
+  const [customer, setCustomer] = useState(location.state.customer);
   const [description, setDescription] = useState(location.state.description);
   const [type, setType] = useState(location.state.type);
   const [status, setStatus] = useState(location.state.status);
@@ -15,8 +16,12 @@ export default function EditIssuePage() {
   async function UpdateIssue(e) {
     e.preventDefault();
 
+    // Update the issue
+    // sent a PUT request to the backend API with the updated issue data
+    //if not necessary, can remove the fields which are not updated
     try {
       const updatedIssue = {
+        customer,
         title,
         description,
         type,
@@ -47,7 +52,7 @@ export default function EditIssuePage() {
       >
         <h2 className="text-xl font-bold  mb-4">Edit Issue</h2>
 
-        {/* ID */}
+        {/*  id field(only show it, cant change) */}
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1 ">ID</label>
           <input
@@ -58,7 +63,7 @@ export default function EditIssuePage() {
           />
         </div>
 
-        {/* Title */}
+        {/* getting updated title */}
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1">Title</label>
           <input
@@ -71,7 +76,20 @@ export default function EditIssuePage() {
           />
         </div>
 
-        {/* Description */}
+        {/* getting updated customer  name*/}
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">Customer</label>
+          <input
+            type="text"
+            value={customer}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            placeholder="Ashan Odithya"
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+
+        {/* getting updated description */}
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1">Description</label>
           <textarea
@@ -84,7 +102,7 @@ export default function EditIssuePage() {
           />
         </div>
 
-        {/* Type */}
+        {/* getting new type */}
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1 ">Type</label>
           <select
@@ -98,7 +116,7 @@ export default function EditIssuePage() {
           </select>
         </div>
 
-        {/* Status */}
+        {/* getting new status */}
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1 ">Status</label>
           <select
