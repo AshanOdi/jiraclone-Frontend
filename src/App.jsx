@@ -6,6 +6,7 @@ import CreateIssuePage from "./pages/createIssuePage";
 import IssueDetailPage from "./pages/issueDetailPage";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import RequireIssue from "./components/requireIssue";
 import IssueHistoryPage from "./pages/issueHistoryPage";
 import { Toaster } from "react-hot-toast";
 import Contact from "./pages/contactPage";
@@ -23,9 +24,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/issue" element={<AllIssuePage />} />
-            <Route path="/edit" element={<EditIssuePage />} />
+            <Route path="/edit" element={<RequireIssue><EditIssuePage /></RequireIssue>} />
             <Route path="/create" element={<CreateIssuePage />} />
-            <Route path="/detail" element={<IssueDetailPage />} />
+            <Route path="/detail" element={<RequireIssue><IssueDetailPage /></RequireIssue>} />
             <Route path="/history" element={<IssueHistoryPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<HomePage />} />
