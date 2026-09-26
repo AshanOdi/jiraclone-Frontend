@@ -5,6 +5,7 @@ import EditIssuePage from "./pages/editIssuePage";
 import CreateIssuePage from "./pages/createIssuePage";
 import IssueDetailPage from "./pages/issueDetailPage";
 import Header from "./components/header";
+import Footer from "./components/footer";
 import IssueHistoryPage from "./pages/issueHistoryPage";
 import { Toaster } from "react-hot-toast";
 import Contact from "./pages/contactPage";
@@ -30,6 +31,7 @@ function App() {
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   );

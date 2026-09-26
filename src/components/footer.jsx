@@ -1,46 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const navigate = useNavigate();
-
   return (
-    <footer className="w-full h-[90px] backdrop-blur-md shadow-2xl flex items-center px-4">
-      <nav
-        className="w-[calc(100%-80px)] h-full flex justify-center items-center  gap-10
-      "
-      >
-        {/* <Link to="/" className="text-[20px] font-bold mx-2">
-          Dashboard
-        </Link> */}
-        <Link
-          to="/contact"
-          className="relative text-lg  text-gray-800 
-               "
-        >
-          Contact Us
-        </Link>
-        <Link
-          to="/contact"
-          className="relative text-lg  text-gray-800 
-               "
-        >
-          About Us
-        </Link>
-        {/* <Link to="/history" className="text-[20px] font-bold mx-2">
-          Issue History
-        </Link> */}
-        <Link
-          to="/contact"
-          className="relative text-lg  text-gray-800 
-               "
-        >
-          FAQ
-        </Link>
-      </nav>
-      <div className="w-[80px] flex justify-center items-center">
-        <Link to="/cart" className="text-[20px] font-bold mx-2">
-          {/* Add Profile or Something */}
-        </Link>
+    <footer className="border-t border-border bg-card">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} forge.</p>
+        <nav className="flex gap-6">
+          <Link to="/contact" className="hover:text-foreground">Contact</Link>
+          <Link to="/contact" className="hover:text-foreground">About</Link>
+          <Link to="/contact" className="hover:text-foreground">FAQ</Link>
+        </nav>
       </div>
     </footer>
   );
