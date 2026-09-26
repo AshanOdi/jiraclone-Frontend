@@ -18,7 +18,9 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-1">
-          {links.map(({ to, label, icon: Icon, end }) => (
+          {links.map(({ to, label, icon, end }) => {
+            const Icon = icon;
+            return (
             <NavLink
               key={to}
               to={to}
@@ -35,7 +37,8 @@ export default function Header() {
               <Icon className="size-4" />
               <span className="hidden sm:inline">{label}</span>
             </NavLink>
-          ))}
+            );
+          })}
         </nav>
 
         <Link to="/create" className="ml-auto">
