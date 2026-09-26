@@ -1,4 +1,3 @@
-import "./App.css";
 import HomePage from "./pages/homePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllIssuePage from "./pages/allIssuePage";
@@ -13,10 +12,13 @@ import Contact from "./pages/contactPage";
 function App() {
   return (
     <BrowserRouter>
-      <div className="w-full h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <div className="w-full h-[calc(100vh-20px)] bg-[url('/bgimg.jpg')] bg-center bg-cover flex items-center justify-center">
-          <Toaster position="top-right" />
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6">
+          <Toaster
+            position="top-right"
+            toastOptions={{ style: { fontSize: "14px" } }}
+          />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/issue" element={<AllIssuePage />} />
@@ -27,7 +29,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
-        </div>
+        </main>
       </div>
     </BrowserRouter>
   );
