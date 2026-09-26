@@ -82,7 +82,7 @@ export default function EditIssuePage() {
           <input
             type="text"
             value={customer}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setCustomer(e.target.value)}
             required
             placeholder="Ashan Odithya"
             className="w-full border rounded px-3 py-2"
