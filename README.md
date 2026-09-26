@@ -1,55 +1,24 @@
-# FORGE. (Jira Clone) – Issue Tracker
+# forge. — Issue Tracker (Frontend)
 
-A full-stack issue tracking applicationinspired by Jira.  
-Built with Spring Boot + MySQL (backend) and React + Tailwind CSS (frontend).
+A lightweight Jira-style issue tracker built with React, Vite and Tailwind CSS.
+Backend: Spring Boot ([jiraclone-Backend](https://github.com/AshanOdi/jiraclone-Backend)).
 
 ## Features
 
-- Create, view, update and delete issues
-- Track status changes (Open, In Progress, Waiting on Client, Resolved)
-- Automatically logs Issue History on every status change
-- Responsive UI with React + Tailwind CSS
-- REST API tested via Postman
-- Contact form integrated with Formspree to receive emails
+- Dashboard with stat tiles, status/type charts and recently updated issues
+- Kanban issue board with search and a status "Move" menu
+- Create, edit and delete issues
+- Issue detail page with status history timeline
+- Contact form (Formspree)
 
----
+## Tech
 
-## Tech Stack
+React 19 · React Router · Tailwind CSS v4 · shadcn/ui-style components · lucide-react icons · Chart.js · axios · react-hot-toast
 
-| Frontend                            | Backend            |
-| ----------------------------------- | ------------------ |
-| React + React Router DOM            | Spring Boot        |
-| Tailwind CSS                        | JPA/Hibernate      |
-| Axios, React Hot Toast, React Icons | MySQL / PostgreSQL |
-| Formspree (Contact Form)            | Lombok             |
+## Getting started
 
----
-
-## Backend – Spring Boot
-
-### Prerequisites
-
-- Java
-- Maven
-- MySQL running locally
-
-### Setup
-
-Messages we are getting from Contact Us page
-
-formspree.com
-username : forgeentgra@gmail.com
-password : Abcd1234#
-
-### Setup
-
-1. Clone the repo
-
-   git clone https://github.com/AshanOdi/jiraclone-Frontend.git
-   cd jiraclone-Frontend
-   npm run dev
-
-1. Clone the repo
-   git clone https://github.com/AshanOdi/jiraclone-Backend.git
-   install maven
-   run intellij
+```bash
+npm install
+echo "VITE_BACKEND_URL=http://localhost:8080" > .env
+npm run dev
+```
