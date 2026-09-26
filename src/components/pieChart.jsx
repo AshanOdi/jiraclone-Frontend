@@ -39,7 +39,10 @@ export default function PieChart({ items }) {
       <ul className="w-full space-y-2 text-sm">
         {items.map((i) => (
           <li key={i.label} className="flex items-center gap-2">
-            <span className="size-2.5 rounded-full" style={{ background: i.color }} />
+            <span
+              className="size-2.5 rounded-full"
+              style={{ background: i.color }}
+            />
             <span className="text-muted-foreground">{i.label}</span>
             <span className="ml-auto font-medium">{i.value || 0}</span>
           </li>

@@ -68,9 +68,15 @@ export default function CreateIssuePage() {
               </div>
               <div>
                 <Label htmlFor="type">Type</Label>
-                <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+                <Select
+                  id="type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                >
                   {Object.entries(TYPES).map(([key, t]) => (
-                    <option key={key} value={key}>{t.label}</option>
+                    <option key={key} value={key}>
+                      {t.label}
+                    </option>
                   ))}
                 </Select>
               </div>
@@ -89,7 +95,11 @@ export default function CreateIssuePage() {
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
-              <Button type="button" variant="outline" onClick={() => navigate(-1)}>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => navigate(-1)}
+              >
                 Cancel
               </Button>
               <Button type="submit" disabled={saving}>

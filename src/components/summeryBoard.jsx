@@ -1,5 +1,11 @@
 import PieChart from "./pieChart";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { STATUSES, TYPES } from "../lib/issues";
 
 // chart card showing issue distribution by "Status" or "Type"
@@ -16,7 +22,9 @@ export default function SummeryBoard({ title, task }) {
     <Card>
       <CardHeader>
         <CardTitle>By {title}</CardTitle>
-        <CardDescription>Issue distribution by {title.toLowerCase()}</CardDescription>
+        <CardDescription>
+          Issue distribution by {title.toLowerCase()}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <PieChart items={items} />

@@ -9,7 +9,12 @@ export default function PageHeader({ title, description, back, children }) {
   return (
     <div className="flex flex-wrap items-center gap-3 mb-6">
       {back && (
-        <Button variant="outline" size="icon" onClick={() => navigate(-1)} title="Back">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => navigate(-1)}
+          title="Back"
+        >
           <ArrowLeft className="size-4" />
         </Button>
       )}

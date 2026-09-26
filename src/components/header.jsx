@@ -21,22 +21,22 @@ export default function Header() {
           {links.map(({ to, label, icon, end }) => {
             const Icon = icon;
             return (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                cn(
-                  "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
-                  isActive
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )
-              }
-            >
-              <Icon className="size-4" />
-              <span className="hidden sm:inline">{label}</span>
-            </NavLink>
+              <NavLink
+                key={to}
+                to={to}
+                end={end}
+                className={({ isActive }) =>
+                  cn(
+                    "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-muted text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
+                  )
+                }
+              >
+                <Icon className="size-4" />
+                <span className="hidden sm:inline">{label}</span>
+              </NavLink>
             );
           })}
         </nav>

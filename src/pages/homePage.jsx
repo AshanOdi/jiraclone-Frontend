@@ -5,7 +5,12 @@ import { CheckCircle2, CircleDot, Clock, Layers, Loader } from "lucide-react";
 import SummeryBoard from "../components/summeryBoard";
 import CountCard from "../components/countCard";
 import { StatusBadge, TypeBadge } from "../components/issueBadges";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { STATUSES, formatDate } from "../lib/issues";
 
 export default function HomePage() {
@@ -42,10 +47,30 @@ export default function HomePage() {
 
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         <CountCard title="Total" count={summary.total} icon={Layers} />
-        <CountCard title="Open" count={summary.OPEN} icon={CircleDot} color={STATUSES.OPEN.color} />
-        <CountCard title="In Progress" count={summary.IN_PROGRESS} icon={Loader} color={STATUSES.IN_PROGRESS.color} />
-        <CountCard title="Waiting" count={summary.WAITING_ON_CLIENT} icon={Clock} color={STATUSES.WAITING_ON_CLIENT.color} />
-        <CountCard title="Resolved" count={summary.RESOLVED} icon={CheckCircle2} color={STATUSES.RESOLVED.color} />
+        <CountCard
+          title="Open"
+          count={summary.OPEN}
+          icon={CircleDot}
+          color={STATUSES.OPEN.color}
+        />
+        <CountCard
+          title="In Progress"
+          count={summary.IN_PROGRESS}
+          icon={Loader}
+          color={STATUSES.IN_PROGRESS.color}
+        />
+        <CountCard
+          title="Waiting"
+          count={summary.WAITING_ON_CLIENT}
+          icon={Clock}
+          color={STATUSES.WAITING_ON_CLIENT.color}
+        />
+        <CountCard
+          title="Resolved"
+          count={summary.RESOLVED}
+          icon={CheckCircle2}
+          color={STATUSES.RESOLVED.color}
+        />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -59,7 +84,9 @@ export default function HomePage() {
         </CardHeader>
         <CardContent className="p-0">
           {recent.length === 0 ? (
-            <p className="px-5 pb-5 text-sm text-muted-foreground">No issues yet.</p>
+            <p className="px-5 pb-5 text-sm text-muted-foreground">
+              No issues yet.
+            </p>
           ) : (
             <ul className="divide-y divide-border border-t border-border">
               {recent.map((issue) => (

@@ -4,7 +4,12 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import PageHeader from "../components/pageHeader";
 import { StatusBadge, TypeBadge } from "../components/issueBadges";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { formatDate } from "../lib/issues";
 
@@ -16,7 +21,9 @@ export default function IssueDetailPage() {
   async function DeleteIssue() {
     if (!window.confirm(`Delete issue #${issue.id}?`)) return;
     try {
-      await axios.delete(import.meta.env.VITE_BACKEND_URL + `/api/issues/${issue.id}`);
+      await axios.delete(
+        import.meta.env.VITE_BACKEND_URL + `/api/issues/${issue.id}`,
+      );
       toast.success("Issue Deleted Successfully!");
       navigate("/issue");
     } catch (err) {
@@ -31,7 +38,10 @@ export default function IssueDetailPage() {
     <div>
       <PageHeader back title={issue.title} description={`Issue #${issue.id}`}>
         {/* go to edit page with the issue as state */}
-        <Button variant="outline" onClick={() => navigate("/edit", { state: issue })}>
+        <Button
+          variant="outline"
+          onClick={() => navigate("/edit", { state: issue })}
+        >
           <Pencil className="size-4" />
           Edit
         </Button>
@@ -58,7 +68,9 @@ export default function IssueDetailPage() {
             </CardHeader>
             <CardContent>
               {histories.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No history available.</p>
+                <p className="text-sm text-muted-foreground">
+                  No history available.
+                </p>
               ) : (
                 <ol className="relative border-l border-border ml-1.5 space-y-5">
                   {histories.map((history) => (
@@ -86,8 +98,12 @@ export default function IssueDetailPage() {
           </CardHeader>
           <CardContent>
             <dl className="space-y-3 text-sm">
-              <Row label="Status"><StatusBadge status={issue.status} /></Row>
-              <Row label="Type"><TypeBadge type={issue.type} /></Row>
+              <Row label="Status">
+                <StatusBadge status={issue.status} />
+              </Row>
+              <Row label="Type">
+                <TypeBadge type={issue.type} />
+              </Row>
               <Row label="Customer">{issue.customer}</Row>
               <Row label="Created">{formatDate(issue.createdAt)}</Row>
               <Row label="Updated">{formatDate(issue.updatedAt)}</Row>

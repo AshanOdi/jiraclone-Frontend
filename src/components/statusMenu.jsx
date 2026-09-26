@@ -36,7 +36,10 @@ export default function StatusMenu({ status, onChange }) {
               }}
               className="flex w-full items-center gap-2 rounded px-2 py-1.5 text-left text-sm hover:bg-muted cursor-pointer"
             >
-              <span className="size-2 rounded-full" style={{ background: STATUSES[next].color }} />
+              <span
+                className="size-2 rounded-full"
+                style={{ background: STATUSES[next].color }}
+              />
               {STATUSES[next].label}
             </button>
           ))}

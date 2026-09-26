@@ -17,7 +17,9 @@ export function Input({ className, ...props }) {
 }
 
 export function Textarea({ className, ...props }) {
-  return <textarea className={cn(field, "resize-none", className)} {...props} />;
+  return (
+    <textarea className={cn(field, "resize-none", className)} {...props} />
+  );
 }
 
 export function Select({ className, ...props }) {

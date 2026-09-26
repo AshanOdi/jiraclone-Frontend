@@ -25,7 +25,7 @@ export default function Board() {
     (i) =>
       !query ||
       i.title?.toLowerCase().includes(query) ||
-      i.customer?.toLowerCase().includes(query)
+      i.customer?.toLowerCase().includes(query),
   );
 
   return (

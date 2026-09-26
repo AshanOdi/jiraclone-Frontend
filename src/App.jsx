@@ -23,9 +23,23 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/issue" element={<AllIssuePage />} />
-            <Route path="/edit" element={<RequireIssue><EditIssuePage /></RequireIssue>} />
+            <Route
+              path="/edit"
+              element={
+                <RequireIssue>
+                  <EditIssuePage />
+                </RequireIssue>
+              }
+            />
             <Route path="/create" element={<CreateIssuePage />} />
-            <Route path="/detail" element={<RequireIssue><IssueDetailPage /></RequireIssue>} />
+            <Route
+              path="/detail"
+              element={
+                <RequireIssue>
+                  <IssueDetailPage />
+                </RequireIssue>
+              }
+            />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<HomePage />} />
           </Routes>

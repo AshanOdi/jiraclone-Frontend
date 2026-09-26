@@ -5,7 +5,7 @@ export function Card({ className, ...props }) {
     <div
       className={cn(
         "rounded-xl border border-border bg-card shadow-sm",
-        className
+        className,
       )}
       {...props}
     />
@@ -13,7 +13,9 @@ export function Card({ className, ...props }) {
 }
 
 export function CardHeader({ className, ...props }) {
-  return <div className={cn("flex flex-col gap-1 p-5", className)} {...props} />;
+  return (
+    <div className={cn("flex flex-col gap-1 p-5", className)} {...props} />
+  );
 }
 
 export function CardTitle({ className, ...props }) {

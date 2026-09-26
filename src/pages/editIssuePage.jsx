@@ -28,7 +28,7 @@ export default function EditIssuePage() {
       const updatedIssue = { customer, title, description, type, status };
       await axios.put(
         import.meta.env.VITE_BACKEND_URL + `/api/issues/${issue.id}`,
-        updatedIssue
+        updatedIssue,
       );
       toast.success("Issue Updated Successfully!");
       navigate("/issue");
@@ -74,17 +74,29 @@ export default function EditIssuePage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="type">Type</Label>
-                <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+                <Select
+                  id="type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                >
                   {Object.entries(TYPES).map(([key, t]) => (
-                    <option key={key} value={key}>{t.label}</option>
+                    <option key={key} value={key}>
+                      {t.label}
+                    </option>
                   ))}
                 </Select>
               </div>
               <div>
                 <Label htmlFor="status">Status</Label>
-                <Select id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+                <Select
+                  id="status"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
                   {Object.entries(STATUSES).map(([key, s]) => (
-                    <option key={key} value={key}>{s.label}</option>
+                    <option key={key} value={key}>
+                      {s.label}
+                    </option>
                   ))}
                 </Select>
               </div>
@@ -102,7 +114,11 @@ export default function EditIssuePage() {
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
-              <Button type="button" variant="outline" onClick={() => navigate(-1)}>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => navigate(-1)}
+              >
                 Cancel
               </Button>
               <Button type="submit" disabled={saving}>

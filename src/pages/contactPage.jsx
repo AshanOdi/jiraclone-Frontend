@@ -3,7 +3,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Mail, Phone } from "lucide-react";
 import PageHeader from "../components/pageHeader";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input, Label, Textarea } from "../components/ui/form";
 
@@ -12,7 +18,10 @@ const emptyForm = { name: "", email: "", message: "" };
 const faqs = [
   ["How do I create an issue?", "Click “New Issue” in the top bar."],
   ["How do I update a status?", "Use the “Move” menu on a card in the board."],
-  ["Can I delete an issue?", "Yes, from the issue page or from a resolved card."],
+  [
+    "Can I delete an issue?",
+    "Yes, from the issue page or from a resolved card.",
+  ],
 ];
 
 // Contact page with a form to send messages, About us and FAQ sections
@@ -27,7 +36,10 @@ export default function Contact() {
     setSending(true);
     try {
       await axios.post(formEndpoint, formData, {
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       });
       toast.success("Successfully Sent!");
       setFormData(emptyForm);
@@ -44,7 +56,10 @@ export default function Contact() {
 
   return (
     <div>
-      <PageHeader title="Contact" description="Questions or feedback? Get in touch." />
+      <PageHeader
+        title="Contact"
+        description="Questions or feedback? Get in touch."
+      />
 
       <div className="grid lg:grid-cols-3 gap-4">
         <Card className="lg:col-span-2">
@@ -57,16 +72,39 @@ export default function Contact() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" />
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your name"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" />
+                  <Input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="you@example.com"
+                  />
                 </div>
               </div>
               <div>
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} required placeholder="Your message here..." />
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your message here..."
+                />
               </div>
               <div className="flex justify-end">
                 <Button type="submit" disabled={sending}>
@@ -84,10 +122,12 @@ export default function Contact() {
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
               <p className="flex items-center gap-2">
-                <Phone className="size-4 text-muted-foreground" /> +94 11 234 5678
+                <Phone className="size-4 text-muted-foreground" /> +94 11 234
+                5678
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="size-4 text-muted-foreground" /> forge@gmail.com
+                <Mail className="size-4 text-muted-foreground" />{" "}
+                forge@gmail.com
               </p>
             </CardContent>
           </Card>
