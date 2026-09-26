@@ -1,69 +1,48 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { KanbanSquare, LayoutDashboard, Plus } from "lucide-react";
+import { Button } from "./ui/button";
+import { cn } from "../lib/utils";
+
+const links = [
+  { to: "/", label: "Dashboard", icon: LayoutDashboard, end: true },
+  { to: "/issue", label: "Issue Board", icon: KanbanSquare },
+];
 
 export default function Header() {
-  const navigate = useNavigate();
-
   return (
-    <header className="w-full h-[90px] shadow-2xl flex items-center px-4">
-      <nav
-        className="w-[calc(100%-80px)] h-full flex justify-center items-center  gap-10
-      "
-      >
-        <div
-          onClick={() => {
-            navigate("/");
-          }}
-          className=" cursor-pointer absolute top-1 left-1 flex flex-row items-center"
-        >
-          <img
-            className="w-[75px] h-[72px] object-cover cursor-pointer mx-2 transition-transform duration-500 ease-in-out hover:rotate-180"
-            src="/log.png"
-            alt="logo"
-          />
-          <img
-            className=" h-[50px] object-cover mx-2 my-3 "
-            src="/name.png"
-            alt="name"
-          />
-        </div>
+    <header className="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur">
+      <div className="max-w-7xl mx-auto h-14 px-4 sm:px-6 flex items-center gap-6">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <img className="size-8" src="/log.png" alt="logo" />
+          <img className="h-5 hidden sm:block" src="/name.png" alt="forge" />
+        </Link>
 
-        {/* <Link to="/" className="text-[20px] font-bold mx-2">
-          Dashboard
-        </Link> */}
-        <Link
-          to="/"
-          className="relative text-xl font-bold text-gray-800 
-               hover:text-orange-400
-               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-orange-400 after:left-0 after:-bottom-1 
-               hover:after:w-full after:transition-all after:duration-300"
-        >
-          DASHBOARD
-        </Link>
-        <Link
-          to="/issue"
-          className="relative text-xl font-bold text-gray-800 
-               hover:text-orange-400
-               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-orange-400 after:left-0 after:-bottom-1 
-               hover:after:w-full after:transition-all after:duration-300"
-        >
-          ISSUE BOARD
-        </Link>
-        {/* <Link to="/history" className="text-[20px] font-bold mx-2">
-          Issue History
-        </Link> */}
-        <Link
-          to="/create"
-          className="relative text-xl font-bold text-gray-800 
-               hover:text-orange-400
-               after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-orange-400 after:left-0 after:-bottom-1 
-               hover:after:w-full after:transition-all after:duration-300"
-        >
-          ADD NEW
-        </Link>
-      </nav>
-      <div className="w-[80px] flex justify-center items-center">
-        <Link to="/cart" className="text-[20px] font-bold mx-2">
-          {/* Add Profile or Something */}
+        <nav className="flex items-center gap-1">
+          {links.map(({ to, label, icon: Icon, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                  isActive
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )
+              }
+            >
+              <Icon className="size-4" />
+              <span className="hidden sm:inline">{label}</span>
+            </NavLink>
+          ))}
+        </nav>
+
+        <Link to="/create" className="ml-auto">
+          <Button size="sm">
+            <Plus className="size-4" />
+            New Issue
+          </Button>
         </Link>
       </div>
     </header>
