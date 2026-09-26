@@ -1,24 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { Card } from "./ui/card";
 
 // A card to show count of issues based on different criteria
-export default function CountCard({ title, count }) {
-  // console.log(count);
-
+export default function CountCard({ title, count, icon: Icon, color }) {
   const navigate = useNavigate();
 
   return (
-    <div
-      onClick={() => {
-        navigate("/issue");
-      }}
-      className="w-1/4 h-[100px] backdrop-blur-xs shadow-lg shadow-gray-500 rounded-xl p-3 mb-3 border-l-4 border-orange-400 cursor-pointer"
+    <Card
+      onClick={() => navigate("/issue")}
+      className="p-4 cursor-pointer transition-shadow hover:shadow-md"
     >
-      <div>
-        <h1>{title}</h1>
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-medium text-muted-foreground">{title}</p>
+        {Icon && <Icon className="size-4" style={{ color }} />}
       </div>
-      <div>
-        <div className="text-2xl font-bold text-card-foreground">{count}</div>
-      </div>
-    </div>
+      <p className="mt-2 text-2xl font-semibold tracking-tight">{count ?? 0}</p>
+    </Card>
   );
 }
