@@ -2,105 +2,103 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import PageHeader from "../components/pageHeader";
+import { Card, CardContent } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Input, Label, Select, Textarea } from "../components/ui/form";
+import { TYPES } from "../lib/issues";
 
 export default function CreateIssuePage() {
   const [title, setTitle] = useState("");
   const [customer, setCustomer] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("BUG");
-  const [status, setStatus] = useState("OPEN"); // default
+  const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
 
-  //creating new issue
+  //creating new issue (new issues always start as OPEN)
   async function CreateIssue(e) {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
+    setSaving(true);
     try {
-      const issue = {
-        title,
-        customer,
-        description,
-        type,
-        status,
-      };
+      const issue = { title, customer, description, type, status: "OPEN" };
       await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/issues", issue);
       toast.success("Successfully Created Issue!");
       navigate("/issue");
     } catch (err) {
       console.log(err);
+      toast.error("Could not create issue");
+    } finally {
+      setSaving(false);
     }
   }
 
   return (
-    <div className=" w-[500px] h-[700px] flex justify-center items-center ">
-      <form
-        onSubmit={CreateIssue}
-        className="w-full max-w-md backdrop-blur-xs  rounded-lg shadow-2xl shadow-gray-600 p-6 "
-      >
-        <h2 className="text-xl font-bold text-gray-700">Create New Issue</h2>
+    <div className="max-w-2xl mx-auto">
+      <PageHeader
+        back
+        title="Create Issue"
+        description="Log a new customer issue"
+      />
 
-        {/*getting title */}
-        <div>
-          <label className="block text-sm font-medium mb-1 p-2">Title</label>
-          <input
-            placeholder="ex : Login Page Error"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 "
-          />
-        </div>
+      <Card>
+        <CardContent className="pt-5">
+          <form onSubmit={CreateIssue} className="space-y-4">
+            <div>
+              <Label htmlFor="title">Title</Label>
+              <Input
+                id="title"
+                placeholder="e.g. Login page error"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
 
-        {/*getting customer name*/}
-        <div>
-          <label className="block text-sm font-medium mb-1 p-2">Customer</label>
-          <input
-            placeholder="ex : Ashan"
-            type="text"
-            value={customer}
-            onChange={(e) => setCustomer(e.target.value)}
-            required
-            className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 "
-          />
-        </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="customer">Customer</Label>
+                <Input
+                  id="customer"
+                  placeholder="e.g. Ashan"
+                  value={customer}
+                  onChange={(e) => setCustomer(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="type">Type</Label>
+                <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+                  {Object.entries(TYPES).map(([key, t]) => (
+                    <option key={key} value={key}>{t.label}</option>
+                  ))}
+                </Select>
+              </div>
+            </div>
 
-        {/*getting description */}
-        <div>
-          <label className="block text-sm font-medium mb-1 p-2">
-            Description
-          </label>
-          <textarea
-            placeholder="ex : Do not work login button"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-            rows="4"
-            className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
-          />
-        </div>
+            <div>
+              <Label htmlFor="description">Description</Label>
+              <Textarea
+                id="description"
+                placeholder="What is going wrong?"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                rows={5}
+              />
+            </div>
 
-        {/* getting type */}
-        <div>
-          <label className="block text-sm font-medium mb-1 p-2">Type</label>
-          <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="w-full border rounded px-3 py-2"
-          >
-            <option value="BUG">Bug</option>
-            <option value="QUESTION">Question</option>
-            <option value="IMPROVEMENT">Improvement</option>
-          </select>
-        </div>
-
-        {/* Submit button */}
-        <button
-          type="submit"
-          className="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700"
-        >
-          Create Issue
-        </button>
-      </form>
+            <div className="flex justify-end gap-2 pt-2">
+              <Button type="button" variant="outline" onClick={() => navigate(-1)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={saving}>
+                {saving ? "Creating..." : "Create Issue"}
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
