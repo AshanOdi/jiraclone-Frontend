@@ -70,7 +70,6 @@ export default function Card({ task, setData, setIsLoading }) {
         } text-black px-2 py-1 rounded`}
       >
         {task.type}
-        {console.log(task.status)}
       </span>
 
       <p className="text-xs text-gray-500 mt-1">
@@ -159,7 +158,6 @@ export default function Card({ task, setData, setIsLoading }) {
         <div
           onClick={(e) => {
             e.stopPropagation();
-            console.log("Delete clicked");
             DeleteIssue(e);
           }}
           className=" bottom-3 right-3 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 group"
