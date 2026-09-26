@@ -1,44 +1,50 @@
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { useNavigate } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-//exported from dashboard to show pie chart of issues based on different criteria
-// title and dataObj are passed as props
-//got from reference; just used
-
-export default function PieChart({ title, dataObj }) {
-  const labels = Object.keys(dataObj);
-  const values = Object.values(dataObj);
-
-  const navigate = useNavigate();
-
-  const colors = [
-    "#f02b2b",
-    "#eaee1d",
-    "#59eb4b",
-    "#4bc0c0",
-    "#9966ff",
-    "#ff9f40",
-    "#8bc34a",
-  ];
+// doughnut chart of issues grouped by a criteria
+// items: [{ label, value, color }]
+export default function PieChart({ items }) {
+  const total = items.reduce((sum, i) => sum + (i.value || 0), 0);
 
   const chartData = {
-    labels,
+    labels: items.map((i) => i.label),
     datasets: [
       {
-        data: values,
-        backgroundColor: colors.slice(0, labels.length),
-        borderWidth: 1,
+        data: items.map((i) => i.value || 0),
+        backgroundColor: items.map((i) => i.color),
+        borderColor: "#ffffff",
+        borderWidth: 2,
       },
     ],
   };
 
+  const options = {
+    cutout: "70%",
+    plugins: { legend: { display: false } },
+    maintainAspectRatio: false,
+  };
+
   return (
-    <div className="w-full flex flex-col justify-center items-center max-w-md rounded p-4">
-      <h2 className="text-lg font-semibold mb-4">{title}</h2>
-      <Pie data={chartData} />
+    <div className="flex flex-col sm:flex-row items-center gap-6">
+      <div className="relative size-44 shrink-0">
+        <Doughnut data={chartData} options={options} />
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+          <span className="text-2xl font-semibold">{total}</span>
+          <span className="text-xs text-muted-foreground">issues</span>
+        </div>
+      </div>
+
+      <ul className="w-full space-y-2 text-sm">
+        {items.map((i) => (
+          <li key={i.label} className="flex items-center gap-2">
+            <span className="size-2.5 rounded-full" style={{ background: i.color }} />
+            <span className="text-muted-foreground">{i.label}</span>
+            <span className="ml-auto font-medium">{i.value || 0}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
