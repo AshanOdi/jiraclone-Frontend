@@ -21,7 +21,7 @@ export default function HomePage() {
   useEffect(() => {
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
-      .then((res) => setIssues(res.data))
+      .then((res) => setIssues(Array.isArray(res.data) ? res.data : []))
       .catch((err) => console.error("Error fetching issues:", err));
   }, []);
 

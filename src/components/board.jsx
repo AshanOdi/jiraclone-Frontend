@@ -15,7 +15,7 @@ export default function Board() {
     if (!isLoading) return;
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
-      .then((res) => setData(res.data))
+      .then((res) => setData(Array.isArray(res.data) ? res.data : []))
       .catch(console.log)
       .finally(() => setIsLoading(false));
   }, [isLoading]);
