@@ -1,3 +1,4 @@
+import { API_URL } from "../lib/api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,7 +21,7 @@ export default function HomePage() {
   // Fetch issues on component mount
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
+      .get(API_URL + "/api/issues")
       .then((res) => setIssues(Array.isArray(res.data) ? res.data : []))
       .catch((err) => console.error("Error fetching issues:", err));
   }, []);

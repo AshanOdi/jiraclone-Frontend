@@ -1,3 +1,4 @@
+import { API_URL } from "../lib/api";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -26,10 +27,7 @@ export default function EditIssuePage() {
     setSaving(true);
     try {
       const updatedIssue = { customer, title, description, type, status };
-      await axios.put(
-        import.meta.env.VITE_BACKEND_URL + `/api/issues/${issue.id}`,
-        updatedIssue,
-      );
+      await axios.put(API_URL + `/api/issues/${issue.id}`, updatedIssue);
       toast.success("Issue Updated Successfully!");
       navigate("/issue");
     } catch (err) {

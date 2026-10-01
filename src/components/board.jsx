@@ -1,3 +1,4 @@
+import { API_URL } from "../lib/api";
 import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import Column from "./column";
@@ -14,7 +15,7 @@ export default function Board() {
   useEffect(() => {
     if (!isLoading) return;
     axios
-      .get(import.meta.env.VITE_BACKEND_URL + "/api/issues")
+      .get(API_URL + "/api/issues")
       .then((res) => setData(Array.isArray(res.data) ? res.data : []))
       .catch(console.log)
       .finally(() => setIsLoading(false));

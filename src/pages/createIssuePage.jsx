@@ -1,3 +1,4 @@
+import { API_URL } from "../lib/api";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -22,7 +23,7 @@ export default function CreateIssuePage() {
     setSaving(true);
     try {
       const issue = { title, customer, description, type, status: "OPEN" };
-      await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/issues", issue);
+      await axios.post(API_URL + "/api/issues", issue);
       toast.success("Successfully Created Issue!");
       navigate("/issue");
     } catch (err) {

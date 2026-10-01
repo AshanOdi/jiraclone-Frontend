@@ -1,3 +1,4 @@
+import { API_URL } from "../lib/api";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +14,7 @@ export default function Card({ task, setData, setIsLoading }) {
   async function DeleteIssue(e) {
     e.stopPropagation();
     try {
-      await axios.delete(
-        import.meta.env.VITE_BACKEND_URL + `/api/issues/${task.id}`,
-      );
+      await axios.delete(API_URL + `/api/issues/${task.id}`);
       toast.success("Resolved Issue Deleted Successfully!");
       setData((prev) => prev.filter((issue) => issue.id !== task.id));
     } catch (err) {
@@ -27,10 +26,9 @@ export default function Card({ task, setData, setIsLoading }) {
   // Update issue status
   async function UpdateStatus(newStatus) {
     try {
-      const res = await axios.put(
-        import.meta.env.VITE_BACKEND_URL + `/api/issues/${task.id}/status`,
-        { status: newStatus },
-      );
+      const res = await axios.put(API_URL + `/api/issues/${task.id}/status`, {
+        status: newStatus,
+      });
 
       setData((prev) =>
         prev.map((issue) =>

@@ -1,3 +1,4 @@
+import { API_URL } from "../lib/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowRight, Pencil, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
@@ -21,9 +22,7 @@ export default function IssueDetailPage() {
   async function DeleteIssue() {
     if (!window.confirm(`Delete issue #${issue.id}?`)) return;
     try {
-      await axios.delete(
-        import.meta.env.VITE_BACKEND_URL + `/api/issues/${issue.id}`,
-      );
+      await axios.delete(API_URL + `/api/issues/${issue.id}`);
       toast.success("Issue Deleted Successfully!");
       navigate("/issue");
     } catch (err) {
